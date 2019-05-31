@@ -8,13 +8,13 @@ package yangxiao1006.gui;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.awt.peer.LightweightPeer;
 
-import javax.swing.text.DefaultStyledDocument;
 
 import yangxiao1006.behavior.*;
 import yangxiao1006.character.*;
 import yangxiao1006.gui.*;
+import yangxiao1006.thread.*;
+
 public class FightFieldFrame extends Frame{
 	
 	
@@ -44,12 +44,14 @@ public class FightFieldFrame extends Frame{
 	
 	
 	//双缓冲
-	private Image imgBuffer;
-	private Graphics gBuffer;
+	private static Image imgBuffer;
+	private static Graphics gBuffer;
 	
-	
+	//角色
 	private static Characters player1;//玩家1
 	private static Characters player2;//玩家2
+	private static Thread p1_moveThread;//玩家移动线程
+	private static Thread p2_moveThread;
 	
 	//只能有一个对象，使用单例模式
 	private static FightFieldFrame fff;//单例模式使用的对象
@@ -82,19 +84,22 @@ public class FightFieldFrame extends Frame{
 		player2.setWeaponBehavior(new SwordBehavior("村里第二好的剑"));
 		player2.setBounds(P2_X, P2_Y, P2_WIDTH, P2_HEIGHT);
 		player2.setDirection(true);
+		player1.setMagicBehavior(new HealBehavior());
+		
+		
+		
+		p1_moveThread=new Thread(new MoveThread(player1),"p1_moveThread");
+		p2_moveThread=new Thread(new MoveThread(player2),"p2_moveThread");
+		
+		p1_moveThread.start();
+		p2_moveThread.start();
+	
+		
 	}
 	
 	
 	
-	public static void main(String args[]) {
-		FightFieldFrame f=getInstance("战斗领域");
-		f.initFrame();
-		//初始化角色
-		f.initCharacter();		
-		//添加事件监听者
-		f.addWindowListener(new MyWindowListener());
-		f.addKeyListener(new GamePad(player1,player2,f));
-	}
+	
 	
 	/** 绘制角色
 	 * @param g 绘图对象
@@ -118,16 +123,27 @@ public class FightFieldFrame extends Frame{
 		//todo:加上具体数值显示
 		
 		
+		
 		//绘制血条
 		g.setColor(Color.red);
 		g.drawRect(c.getX(), c.getY()-STRAND_HEIGHT*2, STRAND_WIDTH, STRAND_HEIGHT);
-
 		g.fillRect(c.getX(), c.getY()-STRAND_HEIGHT*2,curHPStrandWidth , STRAND_HEIGHT);
+		g.setColor(Color.white);
+		g.drawString("HP:"+c.getHP()+"/"+c.getHPU(),c.getX(), c.getY()-STRAND_HEIGHT);
+
+		
 		
 		//绘制魔法条
 		g.setColor(Color.blue);
 		g.drawRect(c.getX(), c.getY()-STRAND_HEIGHT, STRAND_WIDTH, STRAND_HEIGHT);
 		g.fillRect(c.getX(), c.getY()-STRAND_HEIGHT, curMPStrandWidth, STRAND_HEIGHT);
+		g.setColor(Color.white);
+		g.drawString("MP:"+c.getMP()+"/"+c.getMPU(),c.getX(), c.getY());
+		
+		
+		//绘制名字
+		g.setColor(Color.white);
+		g.drawString(c.getName(), c.getX(), c.getY()-STRAND_HEIGHT*3);
 		
 	}
 	
@@ -144,18 +160,19 @@ public class FightFieldFrame extends Frame{
 		
 		
 		//绘制人物
-		if(player1!=null) {
+		if(player1!=null && player1.getIsAliveFlag()) {
 			drawCharacter(gBuffer,player1);
 			drawStrand(gBuffer, player1);
 		}
 		
-		if(player2!=null) {
+		if(player2!=null && player2.getIsAliveFlag()) {
 			drawCharacter(gBuffer,player2);
 			drawStrand(gBuffer, player2);
 			
 		}
 		//由于使用了背景图片，所以不必特地清空背景
 		g.drawImage(imgBuffer, 0, 0, this);
+		
 		
 	}
 	
@@ -164,6 +181,19 @@ public class FightFieldFrame extends Frame{
         //覆盖原本的方法
 		paint(g);
     }
+	
+	/*******************************************main函数*********************************************/
+	public static void main(String args[]) {
+		FightFieldFrame f=getInstance("战斗领域");
+		f.initFrame();
+		//初始化角色
+		f.initCharacter();		
+		//添加事件监听者
+		f.addWindowListener(new MyWindowListener());
+		f.addKeyListener(new GamePad(player1,player2,f));
+
+	}
+	
 	
 	
 }

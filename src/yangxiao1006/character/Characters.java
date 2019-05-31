@@ -17,6 +17,7 @@ public abstract class Characters {
 	private int magicPoint;//MP
 	private int damage;//攻击力
 	private int defense;//防御力
+
 	
 	private int hitPointUpper;//HP上限
 	private int magicPointUpper;//MP上限
@@ -29,6 +30,11 @@ public abstract class Characters {
 	protected Image appearance;//角色外貌，由子类决定，只能通过方法获得
 	private boolean direction;//角色面向的方向，false为朝右，true为朝左
 	
+	
+	//状态
+	volatile private boolean isAliveFlag=true;//是否活着
+	volatile private boolean moveLeftFlag=false;//是否正在向左移动，用于多线程
+	volatile private boolean moveRightFlag=false;//是否正在向右移动
 	
 	
 	protected WeaponBehavior weapon;//武器
@@ -56,6 +62,11 @@ public abstract class Characters {
 		
 	}
 	/**
+	 * 展示角色数据
+	 */
+	public abstract void display ();
+	
+	/**
 	 * 攻击某个角色
 	 * @param c 要攻击的角色
 	 */
@@ -63,6 +74,8 @@ public abstract class Characters {
 		
 		//由于武器有不同的特性，所以伤害的逻辑让武器实现
 		//比如后期编写高级玩法时，弓需要计算射程
+		if(!isAliveFlag) return;//如果已死亡，直接返回，下同
+		
 		weapon.useWeapon(this,c);//此角色攻击角色c
 		
 	}
@@ -71,6 +84,7 @@ public abstract class Characters {
 	 * @param c 魔法的承受者
 	 */
 	public void performMagic (Characters c) {
+		if(!isAliveFlag) return;
 		magic.useMagic(this,c);
 	}
 	
@@ -83,6 +97,8 @@ public abstract class Characters {
 	 * @return 最后造成的真实伤害
 	 */
 	public int hitBy(Characters attacker,int attackDamage) {//被攻击
+		if(!isAliveFlag) return 0;
+		
 		
 		int finalDamage=(attackDamage-defense);//伤害计算：最终伤害=敌方攻击伤害-我方防御力
 		if(hitPoint>0) {
@@ -108,6 +124,7 @@ public abstract class Characters {
 	 * 死亡，完成一些收尾工作
 	 */
 	private void die() {
+		isAliveFlag=false;
 		System.out.println(name+"死亡");
 	}
 	
@@ -116,16 +133,37 @@ public abstract class Characters {
 	 * 向左移动
 	 */
 	public void moveLeft() {
-		x-=100;
+		if(!isAliveFlag) return;
+		
+		if(moveLeftFlag) {
+			x-=1;
+			try {
+				Thread.sleep(1);//防止跑得太快
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
 	}
 	/**
 	 * 向右移动
 	 */
 	public void moveRight() {
-		x+=100;
+		if(!isAliveFlag) return;
+		if(moveRightFlag) {
+			x+=1;
+			
+			try {
+				Thread.sleep(1);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 	
-	
+	/**********************************************set函数*********************************************************/
 	
 	/**
 	 * 设置角色的绘制边界
@@ -157,6 +195,10 @@ public abstract class Characters {
 	public void setMP(int _magicPoint) {magicPoint=_magicPoint;}
 	
 	
+	public void setMoveLeftFlag(boolean flag) {moveLeftFlag=flag;}
+	public void setMoveRightFlag(boolean flag) {moveRightFlag=flag;}
+	
+	/**********************************************get函数*********************************************************/
 	public String getName () {return name;}
 	public int getHP() {return hitPoint;}
 	public int getMP() {return magicPoint;}
@@ -174,8 +216,12 @@ public abstract class Characters {
 	public int getY() {return y;}
 	public int getHeight(){return height;}
 	public int getWidth(){return width;}
+
+	public boolean getIsAliveFlag() {return isAliveFlag;}
+	public boolean getMoveLeftFlag() {return moveLeftFlag;}
+	public boolean getMoveRightFlag() {return moveRightFlag;}
 	
-	public abstract void display ();
+	
 	
 	
 }

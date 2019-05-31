@@ -17,12 +17,15 @@ public class GamePad implements KeyListener{
 	FightFieldFrame fff;
 	
 	
-	public GamePad(Characters p1,Characters p2,FightFieldFrame f) {
+	
+
+	public GamePad(Characters p1, Characters p2, FightFieldFrame f) {
+		// TODO Auto-generated constructor stub
 		player1=p1;
 		player2=p2;
 		fff=f;
 	}
-	
+
 	@Override
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
@@ -40,10 +43,10 @@ public class GamePad implements KeyListener{
 			player2.display();
 			break;
 		case KeyEvent.VK_A:
-			player1.moveLeft();
+			player1.setMoveLeftFlag(true);
 			break;
 		case KeyEvent.VK_D:
-			player1.moveRight();
+			player1.setMoveRightFlag(true);
 			break;
 
 			
@@ -56,11 +59,12 @@ public class GamePad implements KeyListener{
 			
 			break;
 		case KeyEvent.VK_LEFT:
-			player2.moveLeft();
+			player2.setMoveLeftFlag(true);
+			System.out.println("左");
 			break;
 			
 		case KeyEvent.VK_RIGHT:
-			player2.moveRight();
+			player2.setMoveRightFlag(true);
 			break;
 		default:
 			break;
@@ -72,7 +76,39 @@ public class GamePad implements KeyListener{
 	@Override
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
+		int code=e.getKeyCode();
 		
+		switch (code) {
+		case KeyEvent.VK_J:
+
+			
+			break;
+		case KeyEvent.VK_A:
+			player1.setMoveLeftFlag(false);
+			break;
+		case KeyEvent.VK_D:
+			player1.setMoveRightFlag(false);
+			break;
+
+			
+		case KeyEvent.VK_K:
+
+			break;
+		case KeyEvent.VK_NUMPAD1:
+
+			
+			break;
+		case KeyEvent.VK_LEFT:
+			player2.setMoveLeftFlag(false);
+			break;
+			
+		case KeyEvent.VK_RIGHT:
+			player2.setMoveRightFlag(false);
+			break;
+		default:
+			break;
+		}
+		fff.repaint();
 	}
 
 }
