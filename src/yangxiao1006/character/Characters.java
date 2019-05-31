@@ -1,8 +1,8 @@
 package yangxiao1006.character;
 /**
- * project:¡¾Õ½¶·ÁìÓò¡¿Ğ¡ÓÎÏ·<br/>
- * description: ½ÇÉ«Àà£¬ÓÃÓÚÃèÊö½ÇÉ«µÄ¹²ĞÔÌØÕ÷<br/>
- * @author ÑîĞ¥
+ * project:ã€æˆ˜æ–—é¢†åŸŸã€‘å°æ¸¸æˆ<br/>
+ * description: è§’è‰²ç±»ï¼Œç”¨äºæè¿°è§’è‰²çš„å…±æ€§ç‰¹å¾<br/>
+ * @author æ¨å•¸
  * */
 
 
@@ -12,34 +12,34 @@ import yangxiao1006.behavior.*;
 
 public abstract class Characters {
 
-	private String name;//Ãû×Ö
+	private String name;//åå­—
 	private int hitPoint;//HP
 	private int magicPoint;//MP
-	private int damage;//¹¥»÷Á¦
-	private int defense;//·ÀÓùÁ¦
+	private int damage;//æ”»å‡»åŠ›
+	private int defense;//é˜²å¾¡åŠ›
 	
-	private int hitPointUpper;//HPÉÏÏŞ
-	private int magicPointUpper;//MPÉÏÏŞ
+	private int hitPointUpper;//HPä¸Šé™
+	private int magicPointUpper;//MPä¸Šé™
 	
-	//Í¼ĞÎ»æÖÆ
+	//å›¾å½¢ç»˜åˆ¶
 	private int x;
 	private int y;
 	private int height;
 	private int width;
-	protected Image appearance;//½ÇÉ«ÍâÃ²£¬ÓÉ×ÓÀà¾ö¶¨£¬Ö»ÄÜÍ¨¹ı·½·¨»ñµÃ
-	private boolean direction;//½ÇÉ«ÃæÏòµÄ·½Ïò£¬falseÎª³¯ÓÒ£¬trueÎª³¯×ó
+	protected Image appearance;//è§’è‰²å¤–è²Œï¼Œç”±å­ç±»å†³å®šï¼Œåªèƒ½é€šè¿‡æ–¹æ³•è·å¾—
+	private boolean direction;//è§’è‰²é¢å‘çš„æ–¹å‘ï¼Œfalseä¸ºæœå³ï¼Œtrueä¸ºæœå·¦
 	
 	
 	
-	protected WeaponBehavior weapon;//ÎäÆ÷
-	protected MagicBehavior magic;//Ä§·¨
+	protected WeaponBehavior weapon;//æ­¦å™¨
+	protected MagicBehavior magic;//é­”æ³•
 	/**
-	 * ½ÇÉ«µÄ¹¹Ôìº¯Êı
-	 * @param _name ½ÇÉ«Ãû
-	 * @param _hitPoint ÉúÃüÖµ
-	 * @param _magicPoint Ä§Á¦Öµ
-	 * @param _damage ¹¥»÷Á¦
-	 * @param _defense ·ÀÓùÁ¦
+	 * è§’è‰²çš„æ„é€ å‡½æ•°
+	 * @param _name è§’è‰²å
+	 * @param _hitPoint ç”Ÿå‘½å€¼
+	 * @param _magicPoint é­”åŠ›å€¼
+	 * @param _damage æ”»å‡»åŠ›
+	 * @param _defense é˜²å¾¡åŠ›
 	 */
 	public Characters(String _name,int _hitPoint,int _magicPoint,int _damage,int _defense) {
 		name=_name;
@@ -47,28 +47,28 @@ public abstract class Characters {
 		magicPoint=_magicPoint;
 		damage=_damage;
 		defense=_defense;
-		setBounds(0, 0, 300, 300);//Î»ÖÃÄ¬ÈÏÖµ
-		direction=false;//Ä¬ÈÏ³¯ÓÒ
+		setBounds(0, 0, 300, 300);//ä½ç½®é»˜è®¤å€¼
+		direction=false;//é»˜è®¤æœå³
 		
-		//³õÊ¼»¯ÉÏÏŞ
+		//åˆå§‹åŒ–ä¸Šé™
 		hitPointUpper=hitPoint;
 		magicPointUpper=magicPoint;
 		
 	}
 	/**
-	 * ¹¥»÷Ä³¸ö½ÇÉ«
-	 * @param c Òª¹¥»÷µÄ½ÇÉ«
+	 * æ”»å‡»æŸä¸ªè§’è‰²
+	 * @param c è¦æ”»å‡»çš„è§’è‰²
 	 */
 	public void fight(Characters c) {
 		
-		//ÓÉÓÚÎäÆ÷ÓĞ²»Í¬µÄÌØĞÔ£¬ËùÒÔÉËº¦µÄÂß¼­ÈÃÎäÆ÷ÊµÏÖ
-		//±ÈÈçºóÆÚ±àĞ´¸ß¼¶Íæ·¨Ê±£¬¹­ĞèÒª¼ÆËãÉä³Ì
-		weapon.useWeapon(this,c);//´Ë½ÇÉ«¹¥»÷½ÇÉ«c
+		//ç”±äºæ­¦å™¨æœ‰ä¸åŒçš„ç‰¹æ€§ï¼Œæ‰€ä»¥ä¼¤å®³çš„é€»è¾‘è®©æ­¦å™¨å®ç°
+		//æ¯”å¦‚åæœŸç¼–å†™é«˜çº§ç©æ³•æ—¶ï¼Œå¼“éœ€è¦è®¡ç®—å°„ç¨‹
+		weapon.useWeapon(this,c);//æ­¤è§’è‰²æ”»å‡»è§’è‰²c
 		
 	}
 	/**
-	 * Ê©Õ¹Ä§·¨
-	 * @param c Ä§·¨µÄ³ĞÊÜÕß
+	 * æ–½å±•é­”æ³•
+	 * @param c é­”æ³•çš„æ‰¿å—è€…
 	 */
 	public void performMagic (Characters c) {
 		magic.useMagic(this,c);
@@ -77,49 +77,49 @@ public abstract class Characters {
 	
 	
 	/**
-	 * ±»Ä³¸ö½ÇÉ«¹¥»÷
-	 * @param attacker ¹¥»÷Õß
-	 * @param attackDamage ¹¥»÷Õß¸øÓèµÄ¹¥»÷ÉËº¦
-	 * @return ×îºóÔì³ÉµÄÕæÊµÉËº¦
+	 * è¢«æŸä¸ªè§’è‰²æ”»å‡»
+	 * @param attacker æ”»å‡»è€…
+	 * @param attackDamage æ”»å‡»è€…ç»™äºˆçš„æ”»å‡»ä¼¤å®³
+	 * @return æœ€åé€ æˆçš„çœŸå®ä¼¤å®³
 	 */
-	public int hitBy(Characters attacker,int attackDamage) {//±»¹¥»÷
+	public int hitBy(Characters attacker,int attackDamage) {//è¢«æ”»å‡»
 		
-		int finalDamage=(attackDamage-defense);//ÉËº¦¼ÆËã£º×îÖÕÉËº¦=µĞ·½¹¥»÷ÉËº¦-ÎÒ·½·ÀÓùÁ¦
+		int finalDamage=(attackDamage-defense);//ä¼¤å®³è®¡ç®—ï¼šæœ€ç»ˆä¼¤å®³=æ•Œæ–¹æ”»å‡»ä¼¤å®³-æˆ‘æ–¹é˜²å¾¡åŠ›
 		if(hitPoint>0) {
 			hitPoint-=finalDamage;
 		}
 		else{
-			//±¾ÌåÒÑËÀ²»ÊÜÉËº¦
+			//æœ¬ä½“å·²æ­»ä¸å—ä¼¤å®³
 			this.killedBy(attacker);
 		}
 		
-		return finalDamage;//·µ»Ø×îºóÔì³ÉµÄÕæÊµÉËº¦
+		return finalDamage;//è¿”å›æœ€åé€ æˆçš„çœŸå®ä¼¤å®³
 	}
 	/**
-	 * ±»É±ËÀ£¬Íê³ÉÒ»Ğ©ÊÕÎ²¹¤×÷
-	 * @param killer Ğ×ÊÖ
+	 * è¢«æ€æ­»ï¼Œå®Œæˆä¸€äº›æ”¶å°¾å·¥ä½œ
+	 * @param killer å‡¶æ‰‹
 	 */
 	
 	private void killedBy(Characters killer) {
-		this.die();//´Ë¶ÔÏó±»É±ËÀ£¬Õâ¸öº¯ÊıÁô×÷À©Õ¹
+		this.die();//æ­¤å¯¹è±¡è¢«æ€æ­»ï¼Œè¿™ä¸ªå‡½æ•°ç•™ä½œæ‰©å±•
 	}
 	
 	/**
-	 * ËÀÍö£¬Íê³ÉÒ»Ğ©ÊÕÎ²¹¤×÷
+	 * æ­»äº¡ï¼Œå®Œæˆä¸€äº›æ”¶å°¾å·¥ä½œ
 	 */
 	private void die() {
-		System.out.println(name+"ËÀÍö");
+		System.out.println(name+"æ­»äº¡");
 	}
 	
 
 	/**
-	 * Ïò×óÒÆ¶¯
+	 * å‘å·¦ç§»åŠ¨
 	 */
 	public void moveLeft() {
 		x-=100;
 	}
 	/**
-	 * ÏòÓÒÒÆ¶¯
+	 * å‘å³ç§»åŠ¨
 	 */
 	public void moveRight() {
 		x+=100;
@@ -128,29 +128,29 @@ public abstract class Characters {
 	
 	
 	/**
-	 * ÉèÖÃ½ÇÉ«µÄ»æÖÆ±ß½ç
-	 * @param _x x×ø±ê
-	 * @param _y y×ø±ê
-	 * @param _width Í¼Æ¬¿í¶È
-	 * @param _height Í¼Æ¬¸ß¶È
+	 * è®¾ç½®è§’è‰²çš„ç»˜åˆ¶è¾¹ç•Œ
+	 * @param _x xåæ ‡
+	 * @param _y yåæ ‡
+	 * @param _width å›¾ç‰‡å®½åº¦
+	 * @param _height å›¾ç‰‡é«˜åº¦
 	 */
 	public void setBounds(int _x,int _y,int _width,int _height) {x=_x;y=_y;width=_width;height=_height;}
 	/**
-	 * Éè¶¨ÎäÆ÷
-	 * @param w Éè¶¨µÄ¾ßÌåÎäÆ÷
+	 * è®¾å®šæ­¦å™¨
+	 * @param w è®¾å®šçš„å…·ä½“æ­¦å™¨
 	 */
 	public void setWeaponBehavior (WeaponBehavior w) {
 		weapon=w;
-		System.out.println(this.getName()+"ÄÃÆğÁË"+w.getName());
+		System.out.println(this.getName()+"æ‹¿èµ·äº†"+w.getName());
 	}
 	
 	/**
-	 * Éè¶¨Ä§·¨
-	 * @param m Éè¶¨µÄ¾ßÌåÄ§·¨
+	 * è®¾å®šé­”æ³•
+	 * @param m è®¾å®šçš„å…·ä½“é­”æ³•
 	 */
 	public void setMagicBehavior (MagicBehavior m) {
 		magic=m;
-		System.out.println(this.getName()+"ÕıÔÚÒ÷³ª"+m.getName());
+		System.out.println(this.getName()+"æ­£åœ¨åŸå”±"+m.getName());
 	}
 	public void setDirection(Boolean _direction) {direction=_direction;}
 	public void setHP(int _hitPoint) { hitPoint=_hitPoint;}
@@ -166,10 +166,10 @@ public abstract class Characters {
 	public int getDefense() {return defense;}
 	public boolean getDirection() {return direction;}
 	/**
-	 * »ñÈ¡½ÇÉ«ÍâÃ²
-	 * @return ÍâÃ²Í¼Æ¬£¬½»¸ø×ÓÀàÀ´¼ÓÔØ
+	 * è·å–è§’è‰²å¤–è²Œ
+	 * @return å¤–è²Œå›¾ç‰‡ï¼Œäº¤ç»™å­ç±»æ¥åŠ è½½
 	 */
-	public abstract Image getAppearance();//ÎªÁËÈÃ×ÓÀà±ØĞëÉè¶¨ÍâÃ²¶øÉè¶¨Îª³éÏó·½·¨
+	public abstract Image getAppearance();//ä¸ºäº†è®©å­ç±»å¿…é¡»è®¾å®šå¤–è²Œè€Œè®¾å®šä¸ºæŠ½è±¡æ–¹æ³•
 	public int getX() {return x;}
 	public int getY() {return y;}
 	public int getHeight(){return height;}

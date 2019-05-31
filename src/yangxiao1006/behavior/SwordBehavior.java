@@ -4,24 +4,24 @@ import yangxiao1006.character.*;
 
 public class SwordBehavior implements WeaponBehavior {
 
-	private String name="½£";
-	public static final int DAMAGE=6;//ÎäÆ÷»ù´¡ÍşÁ¦
+	private String name="å‰‘";
+	public static final int DAMAGE=6;//æ­¦å™¨åŸºç¡€å¨åŠ›
 	
 	public SwordBehavior() {}
 	public SwordBehavior(String _name) {
-		name=_name;//½££¬ÆñÄÜÎŞÃûOVO
+		name=_name;//å‰‘ï¼Œå²‚èƒ½æ— åOVO
 	}
 	
 	
 	
 	@Override
 	public int useWeapon(Characters attacker,Characters victim) {
-		int attackDamage=DAMAGE+attacker.getDamage();//Ôì³ÉµÄÉËº¦Îª¹¥»÷ÕßµÄÉËº¦¼ÓÉÏÎäÆ÷ÍşÁ¦
+		int attackDamage=DAMAGE+attacker.getDamage();//é€ æˆçš„ä¼¤å®³ä¸ºæ”»å‡»è€…çš„ä¼¤å®³åŠ ä¸Šæ­¦å™¨å¨åŠ›
 		int finalDamage=victim.hitBy(attacker, attackDamage);
 		
 		
-		System.out.println(attacker.getName()+"Ê¹ÓÃ"+name+"¶Ô"+victim.getName()+"Ôì³ÉÁË"+finalDamage+"µãÉËº¦");
-		return finalDamage;//·µ»Ø×îÖÕÉËº¦
+		System.out.println(attacker.getName()+"ä½¿ç”¨"+name+"å¯¹"+victim.getName()+"é€ æˆäº†"+finalDamage+"ç‚¹ä¼¤å®³");
+		return finalDamage;//è¿”å›æœ€ç»ˆä¼¤å®³
 	}
 	@Override
 	public String getName() {return name;}

@@ -1,8 +1,8 @@
 package yangxiao1006.character;
 /**
- * project:¡¾Õ½¶·ÁìÓò¡¿Ğ¡ÓÎÏ·<br/>
- * description: ÓÎÏ·Ö÷Ò³Ãæ<br/>
- * @author ÑîĞ¥
+ * project:ã€æˆ˜æ–—é¢†åŸŸã€‘å°æ¸¸æˆ<br/>
+ * description: æ¸¸æˆä¸»é¡µé¢<br/>
+ * @author æ¨å•¸
  * */
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -20,15 +20,15 @@ public class Knight extends Characters {
 	@Override
 	public void display() {
 		// TODO Auto-generated method stub
-		System.out.println(getName()+"µÄHP£º"+getHP());
+		System.out.println(getName()+"çš„HPï¼š"+getHP());
 	}
 	
 	public static void main(String args[]) {
 		Knight p1=new Knight("jack", 10, 100, 3, 1);
-		WeaponBehavior w=new SwordBehavior("´åÀï×îºÃµÄ½£");
+		WeaponBehavior w=new SwordBehavior("æ‘é‡Œæœ€å¥½çš„å‰‘");
 		p1.setWeaponBehavior(w);
 		Knight p2=new Knight("tom", 10, 100, 3, 5);
-		WeaponBehavior w2=new SwordBehavior("´åÀïµÚ¶şºÃµÄ½£");
+		WeaponBehavior w2=new SwordBehavior("æ‘é‡Œç¬¬äºŒå¥½çš„å‰‘");
 		p2.setWeaponBehavior(w2);
 		
 		p1.fight(p2);
@@ -40,7 +40,7 @@ public class Knight extends Characters {
 	public Image getAppearance() {
 		if(appearance==null) {
 			if(getDirection()) {
-				//falseÎªÓÒ£¬trueÎª×ó
+				//falseä¸ºå³ï¼Œtrueä¸ºå·¦
 				appearance=Toolkit.getDefaultToolkit().getImage("image\\Knight_L.png");
 			}
 			else {

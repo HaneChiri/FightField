@@ -4,11 +4,11 @@ import yangxiao1006.character.Characters;
 
 public interface MagicBehavior {
 	/**
-	 * Ê¹ÓÃÄ§·¨
-	 * @param attacker Ä§·¨ÊÍ·ÅÕß
-	 * @param victim Ä§·¨³ĞÊÜÕß
+	 * ä½¿ç”¨é­”æ³•
+	 * @param attacker é­”æ³•é‡Šæ”¾è€…
+	 * @param victim é­”æ³•æ‰¿å—è€…
 	 * @return
 	 */
-	public int useMagic(Characters attacker,Characters victim);//Ê¹ÓÃÄ§·¨
-	public String getName();//»ñÈ¡Ä§·¨Ãû×Ö
+	public int useMagic(Characters attacker,Characters victim);//ä½¿ç”¨é­”æ³•
+	public String getName();//è·å–é­”æ³•åå­—
 }

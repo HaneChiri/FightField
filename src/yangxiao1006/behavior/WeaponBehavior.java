@@ -4,11 +4,11 @@ import yangxiao1006.character.Characters;
 
 public interface WeaponBehavior {
 	/**
-	 * Ê¹ÓÃÎäÆ÷
-	 * @param attacker ÎäÆ÷³ÖÓĞÕß
-	 * @param victim ±»¹¥»÷Õß
-	 * @return Ôì³ÉµÄÕæÊµÉËº¦
+	 * ä½¿ç”¨æ­¦å™¨
+	 * @param attacker æ­¦å™¨æŒæœ‰è€…
+	 * @param victim è¢«æ”»å‡»è€…
+	 * @return é€ æˆçš„çœŸå®ä¼¤å®³
 	 */
-	public int useWeapon(Characters attacker,Characters victim);//Ê¹ÓÃÎäÆ÷
+	public int useWeapon(Characters attacker,Characters victim);//ä½¿ç”¨æ­¦å™¨
 	public String getName();
 }

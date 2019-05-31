@@ -1,8 +1,8 @@
 package yangxiao1006.gui;
 /**
- * project:¡¾Õ½¶·ÁìÓò¡¿Ğ¡ÓÎÏ·<br/>
- * description: ÓÎÏ·Ö÷Ò³Ãæ<br/>
- * @author ÑîĞ¥
+ * project:ã€æˆ˜æ–—é¢†åŸŸã€‘å°æ¸¸æˆ<br/>
+ * description: æ¸¸æˆä¸»é¡µé¢<br/>
+ * @author æ¨å•¸
  * */
 
 
@@ -25,7 +25,7 @@ public class FightFieldFrame extends Frame{
 	public static final int FFF_HEIGHT=SCREEN_DIMENSION.height;
 	public static final int FFF_WIDTH=SCREEN_DIMENSION.width;
 	
-	//½ÇÉ«³õÊ¼Î»ÖÃºÍ´óĞ¡
+	//è§’è‰²åˆå§‹ä½ç½®å’Œå¤§å°
 	public static final int P1_HEIGHT=300;
 	public static final int P1_WIDTH=300;
 	public static final int P1_X=0;
@@ -37,22 +37,22 @@ public class FightFieldFrame extends Frame{
 	public static final int P2_Y=SCREEN_DIMENSION.height/2;
 	
 	
-	//ÑªÌõÀ¶Ìõ´óĞ¡
+	//è¡€æ¡è“æ¡å¤§å°
 	public static final int STRAND_HEIGHT=20;
 	public static final int STRAND_WIDTH=300;
 	
 	
 	
-	//Ë«»º³å
+	//åŒç¼“å†²
 	private Image imgBuffer;
 	private Graphics gBuffer;
 	
 	
-	private static Characters player1;//Íæ¼Ò1
-	private static Characters player2;//Íæ¼Ò2
+	private static Characters player1;//ç©å®¶1
+	private static Characters player2;//ç©å®¶2
 	
-	//Ö»ÄÜÓĞÒ»¸ö¶ÔÏó£¬Ê¹ÓÃµ¥ÀıÄ£Ê½
-	private static FightFieldFrame fff;//µ¥ÀıÄ£Ê½Ê¹ÓÃµÄ¶ÔÏó
+	//åªèƒ½æœ‰ä¸€ä¸ªå¯¹è±¡ï¼Œä½¿ç”¨å•ä¾‹æ¨¡å¼
+	private static FightFieldFrame fff;//å•ä¾‹æ¨¡å¼ä½¿ç”¨çš„å¯¹è±¡
 	private FightFieldFrame(String title) {
 		super(title);
 	}
@@ -63,23 +63,23 @@ public class FightFieldFrame extends Frame{
 		return fff;
 	}
 	public void initFrame() {
-		//ÕâÀï×¼±¸Ò»Ğ©¶ÔÏó¹¹ÔìÍê³ÉÖ®ºó²ÅÄÜ×öµÄÊÂÇé
+		//è¿™é‡Œå‡†å¤‡ä¸€äº›å¯¹è±¡æ„é€ å®Œæˆä¹‹åæ‰èƒ½åšçš„äº‹æƒ…
 		fff.setVisible(true);
 		setBounds(FFF_X, FFF_Y, FFF_WIDTH, FFF_HEIGHT);
 		
 		Dimension d=getSize();
-		imgBuffer=createImage(d.width, d.height);//Ò»¶¨ÒªÏÔÊ¾Ö®ºó²ÅÄÜÊ¹ÓÃ
+		imgBuffer=createImage(d.width, d.height);//ä¸€å®šè¦æ˜¾ç¤ºä¹‹åæ‰èƒ½ä½¿ç”¨
 		gBuffer=imgBuffer.getGraphics();
 	}
 	
 	public void initCharacter() {
 		player1=new Knight("jack", 100, 100, 3, 1);
-		player1.setWeaponBehavior(new SwordBehavior("´åÀï×îºÃµÄ½£"));
+		player1.setWeaponBehavior(new SwordBehavior("æ‘é‡Œæœ€å¥½çš„å‰‘"));
 		player1.setBounds(P1_X, P1_Y, P1_WIDTH, P1_HEIGHT);
 		player1.setMagicBehavior(new HealBehavior());
 		
 		player2=new Knight("tom", 100, 100, 3, 5);
-		player2.setWeaponBehavior(new SwordBehavior("´åÀïµÚ¶şºÃµÄ½£"));
+		player2.setWeaponBehavior(new SwordBehavior("æ‘é‡Œç¬¬äºŒå¥½çš„å‰‘"));
 		player2.setBounds(P2_X, P2_Y, P2_WIDTH, P2_HEIGHT);
 		player2.setDirection(true);
 	}
@@ -87,18 +87,18 @@ public class FightFieldFrame extends Frame{
 	
 	
 	public static void main(String args[]) {
-		FightFieldFrame f=getInstance("Õ½¶·ÁìÓò");
+		FightFieldFrame f=getInstance("æˆ˜æ–—é¢†åŸŸ");
 		f.initFrame();
-		//³õÊ¼»¯½ÇÉ«
+		//åˆå§‹åŒ–è§’è‰²
 		f.initCharacter();		
-		//Ìí¼ÓÊÂ¼ş¼àÌıÕß
+		//æ·»åŠ äº‹ä»¶ç›‘å¬è€…
 		f.addWindowListener(new MyWindowListener());
 		f.addKeyListener(new GamePad(player1,player2,f));
 	}
 	
-	/** »æÖÆ½ÇÉ«
-	 * @param g »æÍ¼¶ÔÏó
-	 * @param c Òª»æÖÆµÄ½ÇÉ«
+	/** ç»˜åˆ¶è§’è‰²
+	 * @param g ç»˜å›¾å¯¹è±¡
+	 * @param c è¦ç»˜åˆ¶çš„è§’è‰²
 	 * 
 	 */
 	public void drawCharacter(Graphics g,Characters c) {
@@ -112,19 +112,19 @@ public class FightFieldFrame extends Frame{
 		
 		double hpRate=((double)c.getHP())/c.getHPU();
 		double mpRate=((double)c.getMP())/c.getMPU();
-		int curHPStrandWidth=(int)(hpRate* ((double)STRAND_WIDTH));//¼ÆËãÑªÌõ³¤¶È
-		int curMPStrandWidth=(int)(mpRate* ((double)STRAND_WIDTH));//¼ÆËãÑªÌõ³¤¶È
+		int curHPStrandWidth=(int)(hpRate* ((double)STRAND_WIDTH));//è®¡ç®—è¡€æ¡é•¿åº¦
+		int curMPStrandWidth=(int)(mpRate* ((double)STRAND_WIDTH));//è®¡ç®—è¡€æ¡é•¿åº¦
 		
-		//todo:¼ÓÉÏ¾ßÌåÊıÖµÏÔÊ¾
+		//todo:åŠ ä¸Šå…·ä½“æ•°å€¼æ˜¾ç¤º
 		
 		
-		//»æÖÆÑªÌõ
+		//ç»˜åˆ¶è¡€æ¡
 		g.setColor(Color.red);
 		g.drawRect(c.getX(), c.getY()-STRAND_HEIGHT*2, STRAND_WIDTH, STRAND_HEIGHT);
 
 		g.fillRect(c.getX(), c.getY()-STRAND_HEIGHT*2,curHPStrandWidth , STRAND_HEIGHT);
 		
-		//»æÖÆÄ§·¨Ìõ
+		//ç»˜åˆ¶é­”æ³•æ¡
 		g.setColor(Color.blue);
 		g.drawRect(c.getX(), c.getY()-STRAND_HEIGHT, STRAND_WIDTH, STRAND_HEIGHT);
 		g.fillRect(c.getX(), c.getY()-STRAND_HEIGHT, curMPStrandWidth, STRAND_HEIGHT);
@@ -134,16 +134,16 @@ public class FightFieldFrame extends Frame{
 	
 	public void paint(Graphics g) {
 		
-		//È«¶¼ÏÈ»æÖÆÔÚ»º³åÇø
+		//å…¨éƒ½å…ˆç»˜åˆ¶åœ¨ç¼“å†²åŒº
 		
-		//»æÖÆ±³¾°
+		//ç»˜åˆ¶èƒŒæ™¯
 		Image background=getToolkit().getImage("image\\background.jpg");
 		if(background!=null) {
 			gBuffer.drawImage(background, FFF_X, FFF_Y, FFF_WIDTH, FFF_HEIGHT, this);
 		}
 		
 		
-		//»æÖÆÈËÎï
+		//ç»˜åˆ¶äººç‰©
 		if(player1!=null) {
 			drawCharacter(gBuffer,player1);
 			drawStrand(gBuffer, player1);
@@ -154,14 +154,14 @@ public class FightFieldFrame extends Frame{
 			drawStrand(gBuffer, player2);
 			
 		}
-		//ÓÉÓÚÊ¹ÓÃÁË±³¾°Í¼Æ¬£¬ËùÒÔ²»±ØÌØµØÇå¿Õ±³¾°
+		//ç”±äºä½¿ç”¨äº†èƒŒæ™¯å›¾ç‰‡ï¼Œæ‰€ä»¥ä¸å¿…ç‰¹åœ°æ¸…ç©ºèƒŒæ™¯
 		g.drawImage(imgBuffer, 0, 0, this);
 		
 	}
 	
 	
 	public void update(Graphics g) {
-        //¸²¸ÇÔ­±¾µÄ·½·¨
+        //è¦†ç›–åŸæœ¬çš„æ–¹æ³•
 		paint(g);
     }
 	

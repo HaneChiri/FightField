@@ -4,20 +4,20 @@ import yangxiao1006.character.*;
 
 public class HealBehavior implements MagicBehavior{
 
-	private String name="ÖÎÁÆÄ§·¨";
+	private String name="æ²»ç–—é­”æ³•";
 	public static final int COST=6;
 	public static final int HEAL_VALUE=6;
 	
 	
 	
 	/**
-	 * Ä§·¨£º×ÔÎÒ»Ö¸´£¬ÏûºÄÄ§Á¦£¬»Ö¸´ÉúÃü
+	 * é­”æ³•ï¼šè‡ªæˆ‘æ¢å¤ï¼Œæ¶ˆè€—é­”åŠ›ï¼Œæ¢å¤ç”Ÿå‘½
 	 */
 	public int useMagic(Characters attacker, Characters victim) {
-		//×ÔÎÒ»Ö¸´
-		attacker.setMP(attacker.getMP()-COST);//¿Û³ıÄ§Á¦
-		attacker.setHP(attacker.getHP()+HEAL_VALUE);//»Ö¸´ÑªÁ¿
-		System.out.println(attacker.getName()+"»Ö¸´ÁË"+HEAL_VALUE+"µãHP");
+		//è‡ªæˆ‘æ¢å¤
+		attacker.setMP(attacker.getMP()-COST);//æ‰£é™¤é­”åŠ›
+		attacker.setHP(attacker.getHP()+HEAL_VALUE);//æ¢å¤è¡€é‡
+		System.out.println(attacker.getName()+"æ¢å¤äº†"+HEAL_VALUE+"ç‚¹HP");
 		attacker.display();
 		return 0;
 	}

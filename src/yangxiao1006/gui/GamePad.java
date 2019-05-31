@@ -3,8 +3,8 @@ import java.awt.*;
 import java.awt.event.*;
 
 import yangxiao1006.character.*;
-/*ÓÎÏ·ÊÖ±úÀà
- * ÓÃÓÚ½«¼üÎ»Óë½ÇÉ«µÄ¶¯×÷¶ÔÓ¦ÆğÀ´
+/*æ¸¸æˆæ‰‹æŸ„ç±»
+ * ç”¨äºå°†é”®ä½ä¸è§’è‰²çš„åŠ¨ä½œå¯¹åº”èµ·æ¥
  * 
  * */
 
@@ -12,8 +12,8 @@ import yangxiao1006.character.*;
 
 public class GamePad implements KeyListener{
 
-	Characters player1;//Íæ¼Ò1
-	Characters player2;//Íæ¼Ò2
+	Characters player1;//ç©å®¶1
+	Characters player2;//ç©å®¶2
 	FightFieldFrame fff;
 	
 	
