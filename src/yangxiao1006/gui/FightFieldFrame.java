@@ -62,38 +62,35 @@ public class FightFieldFrame extends Frame{
 		}
 		return fff;
 	}
-	public void init() {
+	public void initFrame() {
 		//这里准备一些对象构造完成之后才能做的事情
 		fff.setVisible(true);
 		setBounds(FFF_X, FFF_Y, FFF_WIDTH, FFF_HEIGHT);
-		
-		
 		
 		Dimension d=getSize();
 		imgBuffer=createImage(d.width, d.height);//一定要显示之后才能使用
 		gBuffer=imgBuffer.getGraphics();
 	}
 	
+	public void initCharacter() {
+		player1=new Knight("jack", 100, 100, 3, 1);
+		player1.setWeaponBehavior(new SwordBehavior("村里最好的剑"));
+		player1.setBounds(P1_X, P1_Y, P1_WIDTH, P1_HEIGHT);
+		player1.setMagicBehavior(new HealBehavior());
+		
+		player2=new Knight("tom", 100, 100, 3, 5);
+		player2.setWeaponBehavior(new SwordBehavior("村里第二好的剑"));
+		player2.setBounds(P2_X, P2_Y, P2_WIDTH, P2_HEIGHT);
+		player2.setDirection(true);
+	}
+	
 	
 	
 	public static void main(String args[]) {
 		FightFieldFrame f=getInstance("战斗领域");
-		f.init();
-		
-		
+		f.initFrame();
 		//初始化角色
-		
-		player1=new Knight("jack", 100, 100, 3, 1);
-		SwordBehavior w=new SwordBehavior("村里最好的剑");
-		player1.setWeaponBehavior(w);
-		player1.setBounds(P1_X, P1_Y, P1_WIDTH, P1_HEIGHT);
-		
-		player2=new Knight("tom", 100, 100, 3, 5);
-		SwordBehavior w2=new SwordBehavior("村里第二好的剑");
-		player2.setWeaponBehavior(w2);
-		player2.setBounds(P2_X, P2_Y, P2_WIDTH, P2_HEIGHT);
-		player2.setDirection(true);
-		
+		f.initCharacter();		
 		//添加事件监听者
 		f.addWindowListener(new MyWindowListener());
 		f.addKeyListener(new GamePad(player1,player2,f));

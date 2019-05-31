@@ -46,11 +46,15 @@ public class GamePad implements KeyListener{
 			player1.moveRight();
 			break;
 
+			
+		case KeyEvent.VK_K:
+			player1.performMagic(player2);
+			break;
 		case KeyEvent.VK_NUMPAD1:
 			player2.fight(player1);
 			player1.display();
 			
-			
+			break;
 		case KeyEvent.VK_LEFT:
 			player2.moveLeft();
 			break;

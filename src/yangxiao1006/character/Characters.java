@@ -70,7 +70,9 @@ public abstract class Characters {
 	 * 施展魔法
 	 * @param c 魔法的承受者
 	 */
-	public void performMagic (Characters c) {}
+	public void performMagic (Characters c) {
+		magic.useMagic(this,c);
+	}
 	
 	
 	
@@ -146,8 +148,13 @@ public abstract class Characters {
 	 * 设定魔法
 	 * @param m 设定的具体魔法
 	 */
-	public void setMagicBehavior (MagicBehavior m) {}
+	public void setMagicBehavior (MagicBehavior m) {
+		magic=m;
+		System.out.println(this.getName()+"正在吟唱"+m.getName());
+	}
 	public void setDirection(Boolean _direction) {direction=_direction;}
+	public void setHP(int _hitPoint) { hitPoint=_hitPoint;}
+	public void setMP(int _magicPoint) {magicPoint=_magicPoint;}
 	
 	
 	public String getName () {return name;}

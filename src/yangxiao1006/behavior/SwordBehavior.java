@@ -1,11 +1,11 @@
 package yangxiao1006.behavior;
 
-import yangxiao1006.character.Characters;
+import yangxiao1006.character.*;
 
 public class SwordBehavior implements WeaponBehavior {
 
-	private int damage=6;//武器威力
 	private String name="剑";
+	public static final int DAMAGE=6;//武器基础威力
 	
 	public SwordBehavior() {}
 	public SwordBehavior(String _name) {
@@ -16,7 +16,7 @@ public class SwordBehavior implements WeaponBehavior {
 	
 	@Override
 	public int useWeapon(Characters attacker,Characters victim) {
-		int attackDamage=damage+attacker.getDamage();//造成的伤害为攻击者的伤害加上武器威力
+		int attackDamage=DAMAGE+attacker.getDamage();//造成的伤害为攻击者的伤害加上武器威力
 		int finalDamage=victim.hitBy(attacker, attackDamage);
 		
 		
