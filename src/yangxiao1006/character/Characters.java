@@ -110,11 +110,17 @@ public abstract class Characters {
 	}
 	
 
+	/**
+	 * 向左移动
+	 */
 	public void moveLeft() {
-		x--;
+		x-=100;
 	}
+	/**
+	 * 向右移动
+	 */
 	public void moveRight() {
-		x++;
+		x+=100;
 	}
 	
 	

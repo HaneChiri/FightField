@@ -66,6 +66,9 @@ public class FightFieldFrame extends Frame{
 		//这里准备一些对象构造完成之后才能做的事情
 		fff.setVisible(true);
 		setBounds(FFF_X, FFF_Y, FFF_WIDTH, FFF_HEIGHT);
+		
+		
+		
 		Dimension d=getSize();
 		imgBuffer=createImage(d.width, d.height);//一定要显示之后才能使用
 		gBuffer=imgBuffer.getGraphics();
@@ -115,14 +118,13 @@ public class FightFieldFrame extends Frame{
 		int curHPStrandWidth=(int)(hpRate* ((double)STRAND_WIDTH));//计算血条长度
 		int curMPStrandWidth=(int)(mpRate* ((double)STRAND_WIDTH));//计算血条长度
 		
+		//todo:加上具体数值显示
+		
+		
 		//绘制血条
 		g.setColor(Color.red);
 		g.drawRect(c.getX(), c.getY()-STRAND_HEIGHT*2, STRAND_WIDTH, STRAND_HEIGHT);
-		
-		
-		
-		
-		
+
 		g.fillRect(c.getX(), c.getY()-STRAND_HEIGHT*2,curHPStrandWidth , STRAND_HEIGHT);
 		
 		//绘制魔法条
@@ -157,7 +159,10 @@ public class FightFieldFrame extends Frame{
 		}
 		//由于使用了背景图片，所以不必特地清空背景
 		g.drawImage(imgBuffer, 0, 0, this);
+		
 	}
+	
+	
 	public void update(Graphics g) {
         //覆盖原本的方法
 		paint(g);

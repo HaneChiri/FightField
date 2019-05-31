@@ -50,6 +50,13 @@ public class GamePad implements KeyListener{
 			player2.fight(player1);
 			player1.display();
 			
+			
+		case KeyEvent.VK_LEFT:
+			player2.moveLeft();
+			break;
+			
+		case KeyEvent.VK_RIGHT:
+			player2.moveRight();
 			break;
 		default:
 			break;
