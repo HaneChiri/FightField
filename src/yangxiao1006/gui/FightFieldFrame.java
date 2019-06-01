@@ -1,7 +1,7 @@
 package yangxiao1006.gui;
 /**
  * project:【战斗领域】小游戏<br/>
- * description: 游戏主页面<br/>
+ * description: 游戏主页面，由此类启动<br/>
  * @author 杨啸
  * */
 
@@ -18,14 +18,14 @@ import yangxiao1006.thread.*;
 public class FightFieldFrame extends Frame{
 	
 	
-	
+	//窗口位置与大小
 	public static final Dimension SCREEN_DIMENSION=Toolkit.getDefaultToolkit().getScreenSize();
 	public static final int FFF_X=0;
 	public static final int FFF_Y=0;
 	public static final int FFF_HEIGHT=SCREEN_DIMENSION.height;
 	public static final int FFF_WIDTH=SCREEN_DIMENSION.width;
 	
-	//角色初始位置和大小
+	//玩家初始位置和大小
 	public static final int P1_HEIGHT=300;
 	public static final int P1_WIDTH=300;
 	public static final int P1_X=0;
@@ -37,10 +37,9 @@ public class FightFieldFrame extends Frame{
 	public static final int P2_Y=SCREEN_DIMENSION.height/2;
 	
 	
-	//血条蓝条大小
+	//属性条的大小
 	public static final int STRAND_HEIGHT=20;
 	public static final int STRAND_WIDTH=200;
-	
 	
 	
 	//双缓冲
@@ -50,10 +49,12 @@ public class FightFieldFrame extends Frame{
 	//角色
 	private static Characters player1;//玩家1
 	private static Characters player2;//玩家2
-	private static Thread p1_moveThread;//玩家移动线程
+	private static Thread p1_moveThread;//玩家移动线程，防止键位冲突
 	private static Thread p2_moveThread;
 	
-	//只能有一个对象，使用单例模式
+	/*****************************************初始化方法区****************************************************************/
+	
+	//只能有一个窗体对象，使用单例模式
 	private static FightFieldFrame fff;//单例模式使用的对象
 	private FightFieldFrame(String title) {
 		super(title);
@@ -74,22 +75,25 @@ public class FightFieldFrame extends Frame{
 		gBuffer=imgBuffer.getGraphics();
 	}
 	
+	/**
+	 * 初始化玩家的属性以及武器、魔法
+	 */
 	public void initCharacter() {
 		
-		
+		//初始化玩家1
 		player1=new Knight("jack", 100, 100, 3, 1);
 		player1.setWeaponBehavior(new SwordBehavior("村里最好的剑"));
 		player1.setBounds(P1_X, P1_Y, P1_WIDTH, P1_HEIGHT);
 		player1.setMagicBehavior(new HealBehavior());
 		
+		//初始化玩家2
 		player2=new Knight("tom", 100, 100, 3, 5);
 		player2.setWeaponBehavior(new SwordBehavior("村里第二好的剑"));
 		player2.setBounds(P2_X, P2_Y, P2_WIDTH, P2_HEIGHT);
 		player2.setDirection(true);
 		player2.setMagicBehavior(new HealBehavior());
-		
-		
-		
+			
+		//初始化移动线程
 		p1_moveThread=new Thread(new MoveThread(player1),"p1_moveThread");
 		p2_moveThread=new Thread(new MoveThread(player2),"p2_moveThread");
 		
@@ -99,8 +103,7 @@ public class FightFieldFrame extends Frame{
 		
 	}
 	
-	
-	
+	/*****************************************绘制方法区****************************************************************/
 	
 	
 	/** 绘制角色
@@ -124,13 +127,14 @@ public class FightFieldFrame extends Frame{
 		
 		//todo:加上具体数值显示
 		
-		
+		g.setFont(new Font("宋体", Font.BOLD, 25));
 		
 		//绘制血条
 		g.setColor(Color.red);
 		g.drawRect(c.getX(), c.getY()-STRAND_HEIGHT*2, STRAND_WIDTH, STRAND_HEIGHT);
 		g.fillRect(c.getX(), c.getY()-STRAND_HEIGHT*2,curHPStrandWidth , STRAND_HEIGHT);
 		g.setColor(Color.white);
+		
 		g.drawString("HP:"+c.getHP()+"/"+c.getHPU(),c.getX(), c.getY()-STRAND_HEIGHT);
 
 		
@@ -227,7 +231,7 @@ public class FightFieldFrame extends Frame{
 		f.initCharacter();		
 		//添加事件监听者
 		f.addWindowListener(new MyWindowListener());
-		f.addKeyListener(new GamePad(player1,player2,f));
+		f.addKeyListener(new GamePad(player1,player2,f,gBuffer));
 
 	}
 	
