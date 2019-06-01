@@ -26,11 +26,7 @@ public class GamePad implements KeyListener{
 		fff=f;
 	}
 
-	@Override
-	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
+
 
 	@Override
 	public void keyPressed(KeyEvent e) {
@@ -38,38 +34,46 @@ public class GamePad implements KeyListener{
 		int code=e.getKeyCode();
 		
 		switch (code) {
-		case KeyEvent.VK_J:
+		case KeyEvent.VK_J://玩家1攻击
 			player1.fight(player2);
 			player2.display();
 			break;
-		case KeyEvent.VK_A:
-			player1.setMoveLeftFlag(true);
-			break;
-		case KeyEvent.VK_D:
-			player1.setMoveRightFlag(true);
-			break;
-
-			
-		case KeyEvent.VK_K:
+		case KeyEvent.VK_K://玩家1使用魔法
 			player1.performMagic(player2);
 			break;
-		case KeyEvent.VK_NUMPAD1:
+		case KeyEvent.VK_A://玩家1左
+			player1.setMoveLeftFlag(true);
+			player1.setDirection(true);//false为朝右，true为朝左
+			break;
+		case KeyEvent.VK_D://玩家1右
+			player1.setMoveRightFlag(true);
+			player1.setDirection(false);
+			break;		
+		
+			
+		/****************************************************************/
+		case KeyEvent.VK_NUMPAD1://玩家2攻击
 			player2.fight(player1);
 			player1.display();
 			
 			break;
-		case KeyEvent.VK_LEFT:
+		case KeyEvent.VK_NUMPAD2://玩家2使用魔法
+			player2.performMagic(player1);
+			break;
+		case KeyEvent.VK_LEFT://玩家2左
 			player2.setMoveLeftFlag(true);
-			System.out.println("左");
+			player2.setDirection(true);//false为朝右，true为朝左
 			break;
 			
-		case KeyEvent.VK_RIGHT:
+		case KeyEvent.VK_RIGHT://玩家2右
 			player2.setMoveRightFlag(true);
+			player2.setDirection(false);
 			break;
+		
 		default:
 			break;
 		}
-		fff.repaint();
+		fff.repaint();//重绘
 			
 	}
 
@@ -83,13 +87,14 @@ public class GamePad implements KeyListener{
 
 			
 			break;
-		case KeyEvent.VK_A:
+		case KeyEvent.VK_A://左
 			player1.setMoveLeftFlag(false);
+			
 			break;
-		case KeyEvent.VK_D:
+		case KeyEvent.VK_D://右
 			player1.setMoveRightFlag(false);
+			
 			break;
-
 			
 		case KeyEvent.VK_K:
 
@@ -108,8 +113,14 @@ public class GamePad implements KeyListener{
 		default:
 			break;
 		}
-		fff.repaint();
+		fff.repaint();//重绘
 	}
 
+	
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
 }
 

@@ -11,4 +11,5 @@ public interface WeaponBehavior {
 	 */
 	public int useWeapon(Characters attacker,Characters victim);//使用武器
 	public String getName();
+	public int getAttackRange();
 }

@@ -39,7 +39,7 @@ public class FightFieldFrame extends Frame{
 	
 	//血条蓝条大小
 	public static final int STRAND_HEIGHT=20;
-	public static final int STRAND_WIDTH=300;
+	public static final int STRAND_WIDTH=200;
 	
 	
 	
@@ -70,11 +70,13 @@ public class FightFieldFrame extends Frame{
 		setBounds(FFF_X, FFF_Y, FFF_WIDTH, FFF_HEIGHT);
 		
 		Dimension d=getSize();
-		imgBuffer=createImage(d.width, d.height);//一定要显示之后才能使用
+		imgBuffer=createImage(d.width, d.height);//一定要显示之后(fff.setVisible(true);)才能使用
 		gBuffer=imgBuffer.getGraphics();
 	}
 	
 	public void initCharacter() {
+		
+		
 		player1=new Knight("jack", 100, 100, 3, 1);
 		player1.setWeaponBehavior(new SwordBehavior("村里最好的剑"));
 		player1.setBounds(P1_X, P1_Y, P1_WIDTH, P1_HEIGHT);
@@ -84,7 +86,7 @@ public class FightFieldFrame extends Frame{
 		player2.setWeaponBehavior(new SwordBehavior("村里第二好的剑"));
 		player2.setBounds(P2_X, P2_Y, P2_WIDTH, P2_HEIGHT);
 		player2.setDirection(true);
-		player1.setMagicBehavior(new HealBehavior());
+		player2.setMagicBehavior(new HealBehavior());
 		
 		
 		
@@ -146,6 +148,40 @@ public class FightFieldFrame extends Frame{
 		g.drawString(c.getName(), c.getX(), c.getY()-STRAND_HEIGHT*3);
 		
 	}
+	public void drawStrand(Graphics g) {
+		double p1_hpRate=((double)player1.getHP())/player1.getHPU();
+		double p1_mpRate=((double)player1.getMP())/player1.getMPU();
+		int p1_curHPStrandWidth=(int)(p1_hpRate* ((double)STRAND_WIDTH));//计算血条长度
+		int p1_curMPStrandWidth=(int)(p1_mpRate* ((double)STRAND_WIDTH));//计算血条长度
+		
+
+		int strandX=100;
+		int strandY=200;
+		
+		
+		//绘制p1血条
+		g.setColor(Color.red);
+		g.drawRect(strandX, strandY-STRAND_HEIGHT*2, STRAND_WIDTH, STRAND_HEIGHT);
+		g.fillRect(strandX, strandY-STRAND_HEIGHT*2,p1_curHPStrandWidth , STRAND_HEIGHT);
+		g.setColor(Color.white);
+		g.drawString("HP:"+player1.getHP()+"/"+player1.getHPU(),strandX, strandY-STRAND_HEIGHT);
+
+		
+		
+		//绘制p1魔法条
+		g.setColor(Color.blue);
+		g.drawRect(strandX, strandY-STRAND_HEIGHT, STRAND_WIDTH, STRAND_HEIGHT);
+		g.fillRect(strandX, strandY-STRAND_HEIGHT, p1_curMPStrandWidth, STRAND_HEIGHT);
+		g.setColor(Color.white);
+		g.drawString("MP:"+player1.getMP()+"/"+player1.getMPU(),strandX, strandY);
+		
+		
+		//绘制p1名字
+		g.setColor(Color.white);
+		g.drawString(player1.getName(),strandX, strandY-STRAND_HEIGHT*3);
+		
+		
+	}
 	
 	
 	public void paint(Graphics g) {
@@ -170,6 +206,7 @@ public class FightFieldFrame extends Frame{
 			drawStrand(gBuffer, player2);
 			
 		}
+		//drawStrand(gBuffer);//绘制绝对位置的属性条，由于没有什么技术含量就只做了一个示例
 		//由于使用了背景图片，所以不必特地清空背景
 		g.drawImage(imgBuffer, 0, 0, this);
 		

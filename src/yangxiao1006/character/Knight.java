@@ -38,14 +38,13 @@ public class Knight extends Characters {
 
 	@Override
 	public Image getAppearance() {
-		if(appearance==null) {
-			if(getDirection()) {
+		
+		if(getDirection()) {
 				//false为右，true为左
-				appearance=Toolkit.getDefaultToolkit().getImage("image\\Knight_L.png");
-			}
-			else {
-				appearance=Toolkit.getDefaultToolkit().getImage("image\\Knight_R.png");
-			}
+			appearance=Toolkit.getDefaultToolkit().getImage("image\\Characters\\Knight\\Knight_L.png");
+		}
+		else {
+			appearance=Toolkit.getDefaultToolkit().getImage("image\\Characters\\Knight\\Knight_R.png");
 		}
 		
 		return appearance;

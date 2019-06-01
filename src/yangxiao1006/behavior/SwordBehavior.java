@@ -6,7 +6,7 @@ public class SwordBehavior implements WeaponBehavior {
 
 	private String name="剑";
 	public static final int DAMAGE=6;//武器基础威力
-	
+	public static final int ATTACK_RANGE=100;//武器攻击距离,单位px
 	public SwordBehavior() {}
 	public SwordBehavior(String _name) {
 		name=_name;//剑，岂能无名OVO
@@ -25,5 +25,7 @@ public class SwordBehavior implements WeaponBehavior {
 	}
 	@Override
 	public String getName() {return name;}
+	@Override
+	public int getAttackRange() {return ATTACK_RANGE;}
 
 }

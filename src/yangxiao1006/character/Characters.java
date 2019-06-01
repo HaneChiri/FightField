@@ -69,14 +69,26 @@ public abstract class Characters {
 	/**
 	 * 攻击某个角色
 	 * @param c 要攻击的角色
+	 * @return 造成的真实伤害
 	 */
-	public void fight(Characters c) {
+	public int fight(Characters c) {
 		
 		//由于武器有不同的特性，所以伤害的逻辑让武器实现
 		//比如后期编写高级玩法时，弓需要计算射程
-		if(!isAliveFlag) return;//如果已死亡，直接返回，下同
+		if(!isAliveFlag) return 0;//如果已死亡，直接返回，下同
+		if(weapon==null) {
+			System.out.println(name+"没有武器，无法攻击");
+			return 0;
+		}
 		
-		weapon.useWeapon(this,c);//此角色攻击角色c
+		int attackRange=weapon.getAttackRange();
+		if(attackRange>distance(c)) {
+			//攻击距离大于角色之间的距离才可攻击
+			return weapon.useWeapon(this,c);//此角色攻击角色c
+		}
+		else {
+			return 0;
+		}
 		
 	}
 	/**
@@ -85,6 +97,10 @@ public abstract class Characters {
 	 */
 	public void performMagic (Characters c) {
 		if(!isAliveFlag) return;
+		if(magic==null) {
+			System.out.println(name+"没有可以用的魔法");
+		}
+		
 		magic.useMagic(this,c);
 	}
 	
@@ -116,18 +132,7 @@ public abstract class Characters {
 	 * @param killer 凶手
 	 */
 	
-	private void killedBy(Characters killer) {
-		this.die();//此对象被杀死，这个函数留作扩展
-	}
-	
-	/**
-	 * 死亡，完成一些收尾工作
-	 */
-	private void die() {
-		isAliveFlag=false;
-		System.out.println(name+"死亡");
-	}
-	
+
 
 	/**
 	 * 向左移动
@@ -163,6 +168,32 @@ public abstract class Characters {
 		}
 	}
 	
+	/**********************************************辅助函数*********************************************************/
+	
+	
+	private void killedBy(Characters killer) {
+		this.die();//此对象被杀死，这个函数留作扩展
+	}
+	
+	/**
+	 * 死亡，完成一些收尾工作
+	 */
+	private void die() {
+		isAliveFlag=false;
+		System.out.println(name+"死亡");
+	}
+	
+	/**
+	 * 计算与另一个角色的距离
+	 * 在还没有设计角色的跳跃之前，距离仅在水平方向上计算
+	 * @param c 另一个角色
+	 * @return 与另一个角色的距离
+	 */
+	public int distance(Characters c) {
+		return Math.abs(c.getX()-this.x);
+	}
+	
+	
 	/**********************************************set函数*********************************************************/
 	
 	/**
@@ -188,8 +219,12 @@ public abstract class Characters {
 	 */
 	public void setMagicBehavior (MagicBehavior m) {
 		magic=m;
-		System.out.println(this.getName()+"正在吟唱"+m.getName());
+		System.out.println(this.getName()+"正在准备"+m.getName());
 	}
+	/**
+	 * 设置角色面向的方向
+	 * @param _direction 方向，false为朝右，true为朝左
+	 */
 	public void setDirection(Boolean _direction) {direction=_direction;}
 	public void setHP(int _hitPoint) { hitPoint=_hitPoint;}
 	public void setMP(int _magicPoint) {magicPoint=_magicPoint;}
