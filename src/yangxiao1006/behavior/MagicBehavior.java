@@ -1,5 +1,7 @@
 package yangxiao1006.behavior;
 
+import java.awt.Image;
+
 import yangxiao1006.character.Characters;
 
 public interface MagicBehavior {
@@ -11,4 +13,5 @@ public interface MagicBehavior {
 	 */
 	public int useMagic(Characters attacker,Characters victim);//使用魔法
 	public String getName();//获取魔法名字
+	public Image getAppearance();
 }

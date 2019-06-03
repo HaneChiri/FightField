@@ -44,13 +44,18 @@ public class FightFieldFrame extends Frame{
 	public static final int STRAND_WIDTH=200;
 	
 	
-	//武器栏的位置
+	//栏位大小和Y坐标
 	public static final int SLOT_HEIGHT=100;
 	public static final int SLOT_WIDTH=100;
 	public static final int SLOT_Y=SCREEN_DIMENSION.height-SLOT_HEIGHT-100;
-	public static final int WEAPON_SLOT_P1_X=100;
-	public static final int WEAPON_SLOT_P2_X=SCREEN_DIMENSION.width-SLOT_WIDTH-100;
+	public static final int MARGIN=100;//栏边空白
 	
+	//武器栏的位置
+	public static final int WEAPON_SLOT_P1_X=MARGIN;
+	public static final int WEAPON_SLOT_P2_X=SCREEN_DIMENSION.width-SLOT_WIDTH-MARGIN;
+	//魔法栏的位置
+	public static final int MAGIC_SLOT_P1_X=WEAPON_SLOT_P1_X+SLOT_WIDTH+MARGIN;
+	public static final int MAGIC_SLOT_P2_X=WEAPON_SLOT_P2_X-SLOT_WIDTH-MARGIN;
 	
 	//双缓冲
 	private static Image imgBuffer;
@@ -198,14 +203,19 @@ public class FightFieldFrame extends Frame{
 	}
 	
 	
-	public void drawWeaponSlot(Graphics g) {
-		
-		
+	public void drawSlot(Graphics g) {
+			
 		//绘制玩家1武器栏
 		g.drawImage(player1.getWeapon().getAppearance(), WEAPON_SLOT_P1_X,SLOT_Y,SLOT_WIDTH, SLOT_HEIGHT, this);
 		
 		//绘制玩家2武器栏
 		g.drawImage(player2.getWeapon().getAppearance(), WEAPON_SLOT_P2_X,SLOT_Y,SLOT_WIDTH, SLOT_HEIGHT, this);
+		
+		//绘制玩家1魔法栏
+		g.drawImage(player1.getMagic().getAppearance(), MAGIC_SLOT_P1_X, SLOT_Y, SLOT_WIDTH, SLOT_HEIGHT, this);
+		
+		//绘制玩家2魔法栏
+		g.drawImage(player2.getMagic().getAppearance(), MAGIC_SLOT_P2_X, SLOT_Y, SLOT_WIDTH, SLOT_HEIGHT, this);
 	}
 	
 	
@@ -235,7 +245,7 @@ public class FightFieldFrame extends Frame{
 			
 		}
 		
-		drawWeaponSlot(gBuffer);
+		drawSlot(gBuffer);
 		
 		
 		

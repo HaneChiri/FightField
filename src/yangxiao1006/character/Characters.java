@@ -73,7 +73,7 @@ public abstract class Characters {
 		
 		//初始化武器和魔法
 		weaponSlots= new WeaponBehavior[]{
-				new SwordBehavior("ex咖喱棒"),
+				new SwordBehavior("誓约胜利之剑"),
 				new BowBehavior("复合弓"),
 				new AxeBehavior("军用手斧"),
 				new KnifeBehavior("暗影匕首")
