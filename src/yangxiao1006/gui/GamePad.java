@@ -2,6 +2,7 @@ package yangxiao1006.gui;
 import java.awt.*;
 import java.awt.event.*;
 
+import yangxiao1006.behavior.BowBehavior;
 import yangxiao1006.character.*;
 /*游戏手柄类
  * 用于将键位与角色的动作对应起来
@@ -51,7 +52,9 @@ public class GamePad implements KeyListener{
 			player1.setMoveRightFlag(true);
 			player1.setDirection(false);
 			break;		
-		
+		case KeyEvent.VK_L://玩家1切换武器
+			player1.setWeaponBehavior(new BowBehavior());
+			break;
 			
 		/****************************************************************/
 		case KeyEvent.VK_NUMPAD1://玩家2攻击

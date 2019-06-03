@@ -117,8 +117,14 @@ public abstract class Characters {
 		
 		
 		int finalDamage=(attackDamage-defense);//伤害计算：最终伤害=敌方攻击伤害-我方防御力
+		
+		
+		
 		if(hitPoint>0) {
-			hitPoint-=finalDamage;
+			if(finalDamage>0) {
+				hitPoint-=finalDamage;
+			}
+			
 		}
 		else{
 			//本体已死不受伤害
@@ -167,6 +173,8 @@ public abstract class Characters {
 			}
 		}
 	}
+	
+	
 	
 	/**********************************************辅助函数*********************************************************/
 	
@@ -244,6 +252,8 @@ public abstract class Characters {
 	public boolean getDirection() {return direction;}
 	public WeaponBehavior getWeapon() {return weapon;}
 	public MagicBehavior getMagic() {return magic;}
+
+	
 	
 	/**
 	 * 获取角色外貌
