@@ -8,16 +8,16 @@ import yangxiao1006.behavior.weapon.SwordBehavior;
 
 
 /**
- * 角色：骑士
+ * 角色：皇后
  * @author 杨啸
  *
  */
-public class Knight extends Characters {
+public class Queen extends Characters {
 
-	public static final String APPEARANCE_L_PATH="image\\Characters\\Knight\\Knight_L.png";
-	public static final String APPEARANCE_R_PATH="image\\Characters\\Knight\\Knight_R.png";
+	public static final String APPEARANCE_L_PATH="image\\Characters\\Queen\\Queen_L.png";
+	public static final String APPEARANCE_R_PATH="image\\Characters\\Queen\\Queen_R.png";
 	
-	public Knight(String _name,int _hitPoint,int _magicPoint,int _damage,int _defense,WeaponBehavior[] ws,MagicBehavior[] ms) {
+	public Queen(String _name,int _hitPoint,int _magicPoint,int _damage,int _defense,WeaponBehavior[] ws,MagicBehavior[] ms) {
 		super(_name,_hitPoint,_magicPoint,_damage,_defense,ws,ms);
 	}
 

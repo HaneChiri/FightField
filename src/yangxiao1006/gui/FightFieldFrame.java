@@ -111,7 +111,7 @@ public class FightFieldFrame extends Frame{
 		};
 		
 		//初始化玩家1
-		player1=new Knight("jack", 100, 100, 3, 5,ws1,ms1);
+		player1=new King("jack", 100, 100, 3, 5,ws1,ms1);
 		player1.setBounds(P1_X, P1_Y, P1_WIDTH, P1_HEIGHT);
 		player1.setDirection(false);
 		
@@ -128,7 +128,7 @@ public class FightFieldFrame extends Frame{
 				new InvisibleBehavior()
 		};
 		
-		player2=new Knight("tom", 100, 100, 3, 5,ws2,ms2);
+		player2=new Troll("tom", 100, 100, 3, 5,ws2,ms2);
 		player2.setBounds(P2_X, P2_Y, P2_WIDTH, P2_HEIGHT);
 		player2.setDirection(true);
 			
