@@ -217,15 +217,19 @@ public class FightFieldFrame extends Frame{
 			
 		//绘制玩家1武器栏
 		g.drawImage(player1.getWeapon().getAppearance(), WEAPON_SLOT_P1_X,SLOT_Y,SLOT_WIDTH, SLOT_HEIGHT, this);
+		g.drawString(player1.getWeapon().getName(), WEAPON_SLOT_P1_X,SLOT_Y-STRAND_HEIGHT);
 		
 		//绘制玩家2武器栏
 		g.drawImage(player2.getWeapon().getAppearance(), WEAPON_SLOT_P2_X,SLOT_Y,SLOT_WIDTH, SLOT_HEIGHT, this);
+		g.drawString(player2.getWeapon().getName(), WEAPON_SLOT_P2_X,SLOT_Y-STRAND_HEIGHT);
 		
 		//绘制玩家1魔法栏
 		g.drawImage(player1.getMagic().getAppearance(), MAGIC_SLOT_P1_X, SLOT_Y, SLOT_WIDTH, SLOT_HEIGHT, this);
+		g.drawString(player1.getMagic().getName(),MAGIC_SLOT_P1_X,SLOT_Y-STRAND_HEIGHT);
 		
 		//绘制玩家2魔法栏
 		g.drawImage(player2.getMagic().getAppearance(), MAGIC_SLOT_P2_X, SLOT_Y, SLOT_WIDTH, SLOT_HEIGHT, this);
+		g.drawString(player2.getMagic().getName(),MAGIC_SLOT_P2_X,SLOT_Y-STRAND_HEIGHT);
 	}
 	
 	
