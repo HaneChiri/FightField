@@ -33,6 +33,11 @@ public class Knight extends Characters {
 		p2.setWeaponBehavior(w2);
 		
 		p1.fight(p2);
+		p1.changeWeapon();
+		p1.changeWeapon();
+		p1.changeWeapon();
+		p1.changeWeapon();
+		p1.changeWeapon();
 		p1.display();
 		p2.display();
 	}

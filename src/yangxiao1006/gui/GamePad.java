@@ -55,7 +55,10 @@ public class GamePad implements KeyListener{
 			player1.setDirection(false);
 			break;		
 		case KeyEvent.VK_L://玩家1切换武器
-			player1.setWeaponBehavior(new KnifeBehavior());
+			player1.changeWeapon();
+			break;
+		case KeyEvent.VK_O://玩家1切换魔法
+			player1.changeMagic();
 			break;
 			
 		/****************************************************************/
@@ -78,9 +81,11 @@ public class GamePad implements KeyListener{
 			break;
 		
 		case KeyEvent.VK_NUMPAD3://玩家2切换武器
-			player2.setWeaponBehavior(new KnifeBehavior());
+			player2.changeWeapon();
 			break;
-			
+		case KeyEvent.VK_NUMPAD6://玩家2切换魔法
+			player2.changeMagic();
+			break;
 		default:
 			break;
 		}

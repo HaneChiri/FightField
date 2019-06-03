@@ -45,11 +45,11 @@ public class FightFieldFrame extends Frame{
 	
 	
 	//武器栏的位置
-	public static final int PLOT_HEIGHT=100;
-	public static final int PLOT_WIDTH=100;
-	public static final int PLOT_Y=SCREEN_DIMENSION.height-PLOT_HEIGHT-100;
-	public static final int WEAPON_PLOT_P1_X=100;
-	public static final int WEAPON_PLOT_P2_X=SCREEN_DIMENSION.width-PLOT_WIDTH-100;
+	public static final int SLOT_HEIGHT=100;
+	public static final int SLOT_WIDTH=100;
+	public static final int SLOT_Y=SCREEN_DIMENSION.height-SLOT_HEIGHT-100;
+	public static final int WEAPON_SLOT_P1_X=100;
+	public static final int WEAPON_SLOT_P2_X=SCREEN_DIMENSION.width-SLOT_WIDTH-100;
 	
 	
 	//双缓冲
@@ -198,14 +198,14 @@ public class FightFieldFrame extends Frame{
 	}
 	
 	
-	public void drawWeaponPlot(Graphics g) {
+	public void drawWeaponSlot(Graphics g) {
 		
 		
 		//绘制玩家1武器栏
-		g.drawImage(player1.getWeapon().getAppearance(), WEAPON_PLOT_P1_X,PLOT_Y,PLOT_WIDTH, PLOT_HEIGHT, this);
+		g.drawImage(player1.getWeapon().getAppearance(), WEAPON_SLOT_P1_X,SLOT_Y,SLOT_WIDTH, SLOT_HEIGHT, this);
 		
 		//绘制玩家2武器栏
-		g.drawImage(player2.getWeapon().getAppearance(), WEAPON_PLOT_P2_X,PLOT_Y,PLOT_WIDTH, PLOT_HEIGHT, this);
+		g.drawImage(player2.getWeapon().getAppearance(), WEAPON_SLOT_P2_X,SLOT_Y,SLOT_WIDTH, SLOT_HEIGHT, this);
 	}
 	
 	
@@ -235,7 +235,7 @@ public class FightFieldFrame extends Frame{
 			
 		}
 		
-		drawWeaponPlot(gBuffer);
+		drawWeaponSlot(gBuffer);
 		
 		
 		

@@ -9,6 +9,11 @@ package yangxiao1006.character;
 import java.awt.Image;
 
 import yangxiao1006.behavior.*;
+import yangxiao1006.behavior.magic.HealBehavior;
+import yangxiao1006.behavior.weapon.AxeBehavior;
+import yangxiao1006.behavior.weapon.BowBehavior;
+import yangxiao1006.behavior.weapon.KnifeBehavior;
+import yangxiao1006.behavior.weapon.SwordBehavior;
 
 public abstract class Characters {
 
@@ -39,6 +44,12 @@ public abstract class Characters {
 	
 	protected WeaponBehavior weapon;//武器
 	protected MagicBehavior magic;//魔法
+	
+	protected WeaponBehavior weaponSlots[];//武器栏位，用于存储角色携带的武器，可以切换
+	protected MagicBehavior magicSlots[];//魔法栏位
+	protected int weaponSlotsIndex=0;//栏位索引
+	protected int magicSlotsIndex=0;
+	
 	/**
 	 * 角色的构造函数
 	 * @param _name 角色名
@@ -60,11 +71,52 @@ public abstract class Characters {
 		hitPointUpper=hitPoint;
 		magicPointUpper=magicPoint;
 		
+		//初始化武器和魔法
+		weaponSlots= new WeaponBehavior[]{
+				new SwordBehavior("ex咖喱棒"),
+				new BowBehavior("复合弓"),
+				new AxeBehavior("军用手斧"),
+				new KnifeBehavior("暗影匕首")
+		};
+		magicSlots=new MagicBehavior[] {
+				new HealBehavior()
+		};
+		
 	}
 	/**
 	 * 展示角色数据
 	 */
 	public abstract void display ();
+	
+	/**
+	 * 按顺序切换武器
+	 */
+	public void changeWeapon() {
+		
+		setWeaponBehavior(weaponSlots[weaponSlotsIndex]);
+		
+		if(weaponSlotsIndex+1>=weaponSlots.length) {
+			weaponSlotsIndex=0;
+		}
+		else {
+			weaponSlotsIndex++;
+		}
+		
+	}
+	/**
+	 * 按顺序切换魔法
+	 */
+	public void changeMagic() {
+		setMagicBehavior(magicSlots[magicSlotsIndex]);
+		
+		if(magicSlotsIndex+1>magicSlots.length) {
+			magicSlotsIndex=0;
+		}
+		else {
+			magicSlotsIndex++;
+		}
+		
+	}
 	
 	/**
 	 * 攻击某个角色
