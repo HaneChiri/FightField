@@ -11,6 +11,8 @@ import java.awt.event.*;
 
 
 import yangxiao1006.behavior.*;
+import yangxiao1006.behavior.magic.HealBehavior;
+import yangxiao1006.behavior.weapon.SwordBehavior;
 import yangxiao1006.character.*;
 import yangxiao1006.gui.*;
 import yangxiao1006.thread.*;
@@ -196,10 +198,14 @@ public class FightFieldFrame extends Frame{
 	}
 	
 	
-	public void drawWeaponPlot(Graphics g,Characters c) {
-		g.drawImage(c.getWeapon().getAppearance(), WEAPON_PLOT_P1_X,PLOT_Y,PLOT_WIDTH, PLOT_HEIGHT, this);
+	public void drawWeaponPlot(Graphics g) {
 		
 		
+		//绘制玩家1武器栏
+		g.drawImage(player1.getWeapon().getAppearance(), WEAPON_PLOT_P1_X,PLOT_Y,PLOT_WIDTH, PLOT_HEIGHT, this);
+		
+		//绘制玩家2武器栏
+		g.drawImage(player2.getWeapon().getAppearance(), WEAPON_PLOT_P2_X,PLOT_Y,PLOT_WIDTH, PLOT_HEIGHT, this);
 	}
 	
 	
@@ -229,7 +235,7 @@ public class FightFieldFrame extends Frame{
 			
 		}
 		
-		drawWeaponPlot(gBuffer, player1);
+		drawWeaponPlot(gBuffer);
 		
 		
 		

@@ -1,5 +1,6 @@
-package yangxiao1006.behavior;
+package yangxiao1006.behavior.magic;
 
+import yangxiao1006.behavior.MagicBehavior;
 import yangxiao1006.character.*;
 
 public class HealBehavior implements MagicBehavior{

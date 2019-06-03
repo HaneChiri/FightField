@@ -8,11 +8,12 @@ import java.awt.Image;
 import java.awt.Toolkit;
 
 import yangxiao1006.behavior.MagicBehavior;
-import yangxiao1006.behavior.SwordBehavior;
 import yangxiao1006.behavior.WeaponBehavior;
+import yangxiao1006.behavior.weapon.SwordBehavior;
 
 public class Knight extends Characters {
 
+	
 	public Knight(String _name,int _hitPoint,int _magicPoint,int _damage,int _defense) {
 		super(_name,_hitPoint,_magicPoint,_damage,_defense);
 	}
