@@ -242,6 +242,9 @@ public abstract class Characters {
 	public int getDamage() {return damage;}
 	public int getDefense() {return defense;}
 	public boolean getDirection() {return direction;}
+	public WeaponBehavior getWeapon() {return weapon;}
+	public MagicBehavior getMagic() {return magic;}
+	
 	/**
 	 * 获取角色外貌
 	 * @return 外貌图片，交给子类来加载

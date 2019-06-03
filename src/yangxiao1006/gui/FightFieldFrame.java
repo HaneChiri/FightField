@@ -42,6 +42,14 @@ public class FightFieldFrame extends Frame{
 	public static final int STRAND_WIDTH=200;
 	
 	
+	//武器栏的位置
+	public static final int PLOT_HEIGHT=100;
+	public static final int PLOT_WIDTH=100;
+	public static final int PLOT_Y=SCREEN_DIMENSION.height-PLOT_HEIGHT-100;
+	public static final int WEAPON_PLOT_P1_X=100;
+	public static final int WEAPON_PLOT_P2_X=SCREEN_DIMENSION.width-PLOT_WIDTH-100;
+	
+	
 	//双缓冲
 	private static Image imgBuffer;
 	private static Graphics gBuffer;
@@ -188,6 +196,16 @@ public class FightFieldFrame extends Frame{
 	}
 	
 	
+	public void drawWeaponPlot(Graphics g,Characters c) {
+		g.drawImage(c.getWeapon().getAppearance(), WEAPON_PLOT_P1_X,PLOT_Y,PLOT_WIDTH, PLOT_HEIGHT, this);
+		
+		
+	}
+	
+	
+	
+	
+	
 	public void paint(Graphics g) {
 		
 		//全都先绘制在缓冲区
@@ -210,6 +228,11 @@ public class FightFieldFrame extends Frame{
 			drawStrand(gBuffer, player2);
 			
 		}
+		
+		drawWeaponPlot(gBuffer, player1);
+		
+		
+		
 		//drawStrand(gBuffer);//绘制绝对位置的属性条，由于没有什么技术含量就只做了一个示例
 		//由于使用了背景图片，所以不必特地清空背景
 		g.drawImage(imgBuffer, 0, 0, this);

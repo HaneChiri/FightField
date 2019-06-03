@@ -1,5 +1,7 @@
 package yangxiao1006.behavior;
 
+import java.awt.Image;
+
 import yangxiao1006.character.Characters;
 
 public interface WeaponBehavior {
@@ -12,4 +14,5 @@ public interface WeaponBehavior {
 	public int useWeapon(Characters attacker,Characters victim);//使用武器
 	public String getName();
 	public int getAttackRange();
+	public Image getAppearance();
 }
