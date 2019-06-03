@@ -12,6 +12,10 @@ import java.awt.event.*;
 
 import yangxiao1006.behavior.*;
 import yangxiao1006.behavior.magic.HealBehavior;
+import yangxiao1006.behavior.magic.InvisibleBehavior;
+import yangxiao1006.behavior.weapon.AxeBehavior;
+import yangxiao1006.behavior.weapon.BowBehavior;
+import yangxiao1006.behavior.weapon.KnifeBehavior;
 import yangxiao1006.behavior.weapon.SwordBehavior;
 import yangxiao1006.character.*;
 import yangxiao1006.gui.*;
@@ -95,13 +99,36 @@ public class FightFieldFrame extends Frame{
 	 */
 	public void initCharacter() {
 		
+		WeaponBehavior[] ws1=new WeaponBehavior[]{
+				new SwordBehavior("誓约胜利之剑"),
+				new BowBehavior("复合弓"),
+				new AxeBehavior("军用手斧"),
+				new KnifeBehavior("淬毒匕首")
+		};
+		MagicBehavior[] ms1=new MagicBehavior[] {
+				new HealBehavior("圣愈术"),
+				new InvisibleBehavior("潜行")
+		};
+		
 		//初始化玩家1
-		player1=new Knight("jack", 100, 100, 3, 1);
+		player1=new Knight("jack", 100, 100, 3, 5,ws1,ms1);
 		player1.setBounds(P1_X, P1_Y, P1_WIDTH, P1_HEIGHT);
-		//player2.setDirection(false);
+		player1.setDirection(false);
 		
 		//初始化玩家2
-		player2=new Knight("tom", 100, 100, 3, 5);
+		
+		WeaponBehavior[] ws2=new WeaponBehavior[]{
+				new SwordBehavior(),
+				new BowBehavior(),
+				new AxeBehavior(),
+				new KnifeBehavior()
+		};
+		MagicBehavior[] ms2=new MagicBehavior[] {
+				new HealBehavior(),
+				new InvisibleBehavior()
+		};
+		
+		player2=new Knight("tom", 100, 100, 3, 5,ws2,ms2);
 		player2.setBounds(P2_X, P2_Y, P2_WIDTH, P2_HEIGHT);
 		player2.setDirection(true);
 			

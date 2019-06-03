@@ -16,8 +16,8 @@ public class Knight extends Characters {
 	public static final String APPEARANCE_L_PATH="image\\Characters\\Knight\\Knight_L.png";
 	public static final String APPEARANCE_R_PATH="image\\Characters\\Knight\\Knight_R.png";
 	
-	public Knight(String _name,int _hitPoint,int _magicPoint,int _damage,int _defense) {
-		super(_name,_hitPoint,_magicPoint,_damage,_defense);
+	public Knight(String _name,int _hitPoint,int _magicPoint,int _damage,int _defense,WeaponBehavior[] ws,MagicBehavior[] ms) {
+		super(_name,_hitPoint,_magicPoint,_damage,_defense,ws,ms);
 	}
 
 	@Override

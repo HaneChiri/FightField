@@ -41,7 +41,7 @@ public abstract class Characters {
 	private int height;
 	private int width;
 	protected Image appearance;//角色外貌，由子类决定，只能通过方法获得
-	private boolean direction;//角色面向的方向，false为朝右，true为朝左
+	private boolean direction=false;//角色面向的方向，false为朝右，true为朝左
 	
 	
 	//状态
@@ -70,7 +70,7 @@ public abstract class Characters {
 	 * @param _damage 攻击力
 	 * @param _defense 防御力
 	 */
-	public Characters(String _name,int _hitPoint,int _magicPoint,int _damage,int _defense) {
+	public Characters(String _name,int _hitPoint,int _magicPoint,int _damage,int _defense,WeaponBehavior[] ws,MagicBehavior[] ms) {
 		name=_name;
 		hitPoint=_hitPoint;
 		magicPoint=_magicPoint;
@@ -84,16 +84,8 @@ public abstract class Characters {
 		magicPointUpper=magicPoint;
 		
 		//初始化武器和魔法
-		weaponSlots= new WeaponBehavior[]{
-				new SwordBehavior("誓约胜利之剑"),
-				new BowBehavior("复合弓"),
-				new AxeBehavior("军用手斧"),
-				new KnifeBehavior("暗影匕首")
-		};
-		magicSlots=new MagicBehavior[] {
-				new HealBehavior(),
-				new InvisibleBehavior()
-		};
+		weaponSlots= ws;
+		magicSlots=ms;
 		changeWeapon();
 		changeMagic();
 		
