@@ -40,6 +40,7 @@ public class ClockThread implements Runnable{
 	
 	
 	public void recover(Characters c) {
+		if(!c.getIsAliveFlag()) return;//角色死亡就不再回血
 		c.incHP(Characters.HP_RECOVER);
 		c.incMP(Characters.MP_RECOVER);
 	}
@@ -54,6 +55,7 @@ public class ClockThread implements Runnable{
 			cheackStatus(player2);
 			recover(player1);
 			recover(player2);
+			
 			
 			
 			fff.repaint();

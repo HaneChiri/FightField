@@ -13,6 +13,7 @@ import java.awt.event.*;
 import yangxiao1006.behavior.*;
 import yangxiao1006.behavior.magic.HealBehavior;
 import yangxiao1006.behavior.magic.InvisibleBehavior;
+import yangxiao1006.behavior.magic.NoneMagicBehavior;
 import yangxiao1006.behavior.weapon.AxeBehavior;
 import yangxiao1006.behavior.weapon.BowBehavior;
 import yangxiao1006.behavior.weapon.KnifeBehavior;
@@ -107,7 +108,8 @@ public class FightFieldFrame extends Frame{
 		};
 		MagicBehavior[] ms1=new MagicBehavior[] {
 				new HealBehavior("圣愈术"),
-				new InvisibleBehavior("潜行")
+				new InvisibleBehavior("潜行"),
+				new NoneMagicBehavior("什么都不做的魔法")
 		};
 		
 		//初始化玩家1
@@ -259,7 +261,6 @@ public class FightFieldFrame extends Frame{
 	
 	
 	
-	
 	public void paint(Graphics g) {
 		
 		//全都先绘制在缓冲区
@@ -272,12 +273,12 @@ public class FightFieldFrame extends Frame{
 		
 		
 		//绘制人物
-		if(player1!=null && player1.getIsAliveFlag()) {
+		if(player1!=null) {
 			drawCharacter(gBuffer,player1);
 			drawStrand(gBuffer, player1);
 		}
 		
-		if(player2!=null && player2.getIsAliveFlag()) {
+		if(player2!=null) {
 			drawCharacter(gBuffer,player2);
 			drawStrand(gBuffer, player2);
 			
