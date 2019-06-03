@@ -21,11 +21,15 @@ public abstract class Characters {
 	public static final int ST_NORMAL=0;//正常状态
 	public static final int ST_INVISIBLE=1;//隐身状态
 	
+	public static final int HP_RECOVER=3;//回血
+	public static final int MP_RECOVER=5;//回蓝
+	
 	private String name;//名字
 	private int hitPoint;//HP
 	private int magicPoint;//MP
 	private int damage;//攻击力
 	private int defense;//防御力
+	
 
 	
 	private int hitPointUpper;//HP上限

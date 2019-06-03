@@ -39,16 +39,21 @@ public class ClockThread implements Runnable{
 	}
 	
 	
-	
-	
+	public void recover(Characters c) {
+		c.incHP(Characters.HP_RECOVER);
+		c.incMP(Characters.MP_RECOVER);
+	}
 	
 	@Override
 	public void run() {
 		while(true) {
 			//做这个周期要做的事情
+			
+			
 			cheackStatus(player1);
 			cheackStatus(player2);
-			
+			recover(player1);
+			recover(player2);
 			
 			
 			fff.repaint();
