@@ -1,9 +1,4 @@
 package yangxiao1006.gui;
-/**
- * project:【战斗领域】小游戏<br/>
- * description: 游戏主页面，由此类启动<br/>
- * @author 杨啸
- * */
 
 
 import java.awt.*;
@@ -11,18 +6,18 @@ import java.awt.event.*;
 
 
 import yangxiao1006.behavior.*;
-import yangxiao1006.behavior.magic.HealBehavior;
-import yangxiao1006.behavior.magic.InvisibleBehavior;
-import yangxiao1006.behavior.magic.NoneMagicBehavior;
-import yangxiao1006.behavior.magic.TeleportBehavior;
-import yangxiao1006.behavior.weapon.AxeBehavior;
-import yangxiao1006.behavior.weapon.BowBehavior;
-import yangxiao1006.behavior.weapon.KnifeBehavior;
-import yangxiao1006.behavior.weapon.SwordBehavior;
+import yangxiao1006.behavior.magic.*;
+import yangxiao1006.behavior.weapon.*;
 import yangxiao1006.character.*;
 import yangxiao1006.gui.*;
 import yangxiao1006.thread.*;
 
+
+/**
+ * 战斗领域小游戏
+ * @author 杨啸
+ *
+ */
 public class FightFieldFrame extends Frame{
 	
 	
@@ -86,6 +81,9 @@ public class FightFieldFrame extends Frame{
 		}
 		return fff;
 	}
+	/**
+	 * 初始化框架的位置和大小，以及缓冲对象
+	 */
 	public void initFrame() {
 		//这里准备一些对象构造完成之后才能做的事情
 		fff.setVisible(true);
@@ -161,7 +159,11 @@ public class FightFieldFrame extends Frame{
 			g.drawImage(appearance,c.getX(),c.getY(),c.getWidth(),c.getHeight(),this);
 		}
 	}
-	
+	/**
+	 * 绘制相对位置属性条
+	 * @param g 绘图对象
+	 * @param c 角色
+	 */
 	public void drawStrand(Graphics g,Characters c) {
 		
 		if(c.getStatus()==Characters.ST_INVISIBLE) return;//隐身不绘制
@@ -200,7 +202,7 @@ public class FightFieldFrame extends Frame{
 	}
 	/**
 	 * 绘制绝对位置属性条
-	 * @param g 画笔对象
+	 * @param g 绘图对象
 	 */
 	public void drawStrand(Graphics g) {
 		double p1_hpRate=((double)player1.getHP())/player1.getHPU();
@@ -296,7 +298,6 @@ public class FightFieldFrame extends Frame{
 		
 		
 	}
-	
 	
 	public void update(Graphics g) {
         //覆盖原本的方法

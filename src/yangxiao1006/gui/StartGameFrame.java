@@ -2,6 +2,12 @@ package yangxiao1006.gui;
 
 import java.awt.*;
 
+/**
+ * 还未完成的扩展，时间不太够了
+ * @author 杨啸
+ *
+ */
+
 public class StartGameFrame extends Frame{
 	
 	//窗口位置与大小
@@ -23,12 +29,6 @@ public class StartGameFrame extends Frame{
 		sgf.setVisible(true);
 		sgf.addWindowListener(new MyWindowListener());
 		
-		//初始化选项
-		
-		Button startButton=new Button("hello");
-		startButton.setBounds(100,100,300,300);
-		sgf.add(startButton);
-		startButton.setVisible(true);
 		
 	}
 
