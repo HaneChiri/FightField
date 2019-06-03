@@ -94,6 +94,8 @@ public abstract class Characters {
 				new HealBehavior(),
 				new InvisibleBehavior()
 		};
+		changeWeapon();
+		changeMagic();
 		
 	}
 	/**

@@ -97,16 +97,13 @@ public class FightFieldFrame extends Frame{
 		
 		//初始化玩家1
 		player1=new Knight("jack", 100, 100, 3, 1);
-		player1.setWeaponBehavior(new SwordBehavior("村里最好的剑"));
 		player1.setBounds(P1_X, P1_Y, P1_WIDTH, P1_HEIGHT);
-		player1.setMagicBehavior(new HealBehavior());
+		//player2.setDirection(false);
 		
 		//初始化玩家2
 		player2=new Knight("tom", 100, 100, 3, 5);
-		player2.setWeaponBehavior(new SwordBehavior("村里第二好的剑"));
 		player2.setBounds(P2_X, P2_Y, P2_WIDTH, P2_HEIGHT);
 		player2.setDirection(true);
-		player2.setMagicBehavior(new HealBehavior());
 			
 		//初始化移动线程
 		p1_moveThread=new Thread(new MoveThread(player1),"p1_moveThread");

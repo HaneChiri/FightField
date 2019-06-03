@@ -13,6 +13,8 @@ import yangxiao1006.behavior.weapon.SwordBehavior;
 
 public class Knight extends Characters {
 
+	public static final String APPEARANCE_L_PATH="image\\Characters\\Knight\\Knight_L.png";
+	public static final String APPEARANCE_R_PATH="image\\Characters\\Knight\\Knight_R.png";
 	
 	public Knight(String _name,int _hitPoint,int _magicPoint,int _damage,int _defense) {
 		super(_name,_hitPoint,_magicPoint,_damage,_defense);
@@ -24,33 +26,15 @@ public class Knight extends Characters {
 		System.out.println(getName()+"的HP："+getHP());
 	}
 	
-	public static void main(String args[]) {
-		Knight p1=new Knight("jack", 10, 100, 3, 1);
-		WeaponBehavior w=new SwordBehavior("村里最好的剑");
-		p1.setWeaponBehavior(w);
-		Knight p2=new Knight("tom", 10, 100, 3, 5);
-		WeaponBehavior w2=new SwordBehavior("村里第二好的剑");
-		p2.setWeaponBehavior(w2);
-		
-		p1.fight(p2);
-		p1.changeWeapon();
-		p1.changeWeapon();
-		p1.changeWeapon();
-		p1.changeWeapon();
-		p1.changeWeapon();
-		p1.display();
-		p2.display();
-	}
-
 	@Override
 	public Image getAppearance() {
 		
 		if(getDirection()) {
 				//false为右，true为左
-			appearance=Toolkit.getDefaultToolkit().getImage("image\\Characters\\Knight\\Knight_L.png");
+			appearance=Toolkit.getDefaultToolkit().getImage(APPEARANCE_L_PATH);
 		}
 		else {
-			appearance=Toolkit.getDefaultToolkit().getImage("image\\Characters\\Knight\\Knight_R.png");
+			appearance=Toolkit.getDefaultToolkit().getImage(APPEARANCE_R_PATH);
 		}
 		
 		return appearance;
