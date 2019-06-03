@@ -17,6 +17,9 @@ import yangxiao1006.behavior.weapon.SwordBehavior;
 
 public abstract class Characters {
 
+	public static final int ST_NORMAL=0;//正常状态
+	public static final int ST_INVISIBLE=1;//隐身状态
+	
 	private String name;//名字
 	private int hitPoint;//HP
 	private int magicPoint;//MP
@@ -40,6 +43,7 @@ public abstract class Characters {
 	volatile private boolean isAliveFlag=true;//是否活着
 	volatile private boolean moveLeftFlag=false;//是否正在向左移动，用于多线程
 	volatile private boolean moveRightFlag=false;//是否正在向右移动
+	volatile private int status=ST_NORMAL;//角色状态
 	
 	
 	protected WeaponBehavior weapon;//武器
@@ -49,6 +53,9 @@ public abstract class Characters {
 	protected MagicBehavior magicSlots[];//魔法栏位
 	protected int weaponSlotsIndex=0;//栏位索引
 	protected int magicSlotsIndex=0;
+	
+
+	
 	
 	/**
 	 * 角色的构造函数
@@ -292,6 +299,7 @@ public abstract class Characters {
 	
 	public void setMoveLeftFlag(boolean flag) {moveLeftFlag=flag;}
 	public void setMoveRightFlag(boolean flag) {moveRightFlag=flag;}
+	public void setStatus(int _status) {status=_status;}
 	
 	/**********************************************get函数*********************************************************/
 	public String getName () {return name;}
@@ -304,7 +312,7 @@ public abstract class Characters {
 	public boolean getDirection() {return direction;}
 	public WeaponBehavior getWeapon() {return weapon;}
 	public MagicBehavior getMagic() {return magic;}
-
+	public int getStatus() {return status;}
 	
 	
 	/**
