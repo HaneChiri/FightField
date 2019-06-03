@@ -102,7 +102,7 @@ public class FightFieldFrame extends Frame{
 	public void initCharacter() {
 		
 		WeaponBehavior[] ws1=new WeaponBehavior[]{
-				new SwordBehavior("誓约胜利之剑"),
+				new SwordBehavior("王国里最好的剑"),
 				new BowBehavior("复合弓"),
 				new AxeBehavior("军用手斧"),
 				new KnifeBehavior("淬毒匕首")
@@ -110,11 +110,11 @@ public class FightFieldFrame extends Frame{
 		MagicBehavior[] ms1=new MagicBehavior[] {
 				new HealBehavior("圣愈术"),
 				new InvisibleBehavior("潜行"),
-				new NoneMagicBehavior("什么都不做的")
+				new NoneMagicBehavior("什么都不做的魔法")
 		};
 		
 		//初始化玩家1
-		player1=new King("jack", 100, 100, 3, 5,ws1,ms1);
+		player1=new King("达拉崩吧", 100, 100, 3, 5,ws1,ms1);
 		player1.setBounds(P1_X, P1_Y, P1_WIDTH, P1_HEIGHT);
 		player1.setDirection(false);
 		
@@ -132,7 +132,7 @@ public class FightFieldFrame extends Frame{
 				new TeleportBehavior()
 		};
 		
-		player2=new Troll("tom", 100, 100, 3, 5,ws2,ms2);
+		player2=new Grappler("柔道家", 100, 100, 3, 5,ws2,ms2);
 		player2.setBounds(P2_X, P2_Y, P2_WIDTH, P2_HEIGHT);
 		player2.setDirection(true);
 			
