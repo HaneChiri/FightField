@@ -13,6 +13,8 @@ public interface MagicBehavior {
 	 */
 	public int useMagic(Characters attacker,Characters victim);//使用魔法
 	public String getName();//获取魔法名字
-	public int getCost();//获取魔力消耗
 	public Image getAppearance();
+	
+	//魔法内的常量可以直接获取，避免需要新建一个对象才能获取属性的结果产生
+	
 }

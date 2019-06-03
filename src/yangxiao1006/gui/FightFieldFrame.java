@@ -270,7 +270,7 @@ public class FightFieldFrame extends Frame{
 		f.initCharacter();		
 		//添加事件监听者
 		f.addWindowListener(new MyWindowListener());
-		f.addKeyListener(new GamePad(player1,player2,f,gBuffer));
+		f.addKeyListener(new GamePad(player1,player2,f));
 
 	}
 	

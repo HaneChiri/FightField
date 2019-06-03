@@ -14,9 +14,9 @@ public class HealBehavior implements MagicBehavior{
 	private String name="治疗魔法";
 	private Image appearance;//魔法的图标
 	
-	private static final int COST=6;
-	private static final int HEAL_VALUE=6;
-	private static final String APPEARANCE_PATH="image\\Magic\\Heal.png";
+	public static final int COST=6;
+	public static final int HEAL_VALUE=6;
+	public static final String APPEARANCE_PATH="image\\Magic\\Heal.png";
 	
 	public HealBehavior() {}
 	public HealBehavior(String _name) {
@@ -56,11 +56,6 @@ public class HealBehavior implements MagicBehavior{
 		// TODO Auto-generated method stub
 		appearance=Toolkit.getDefaultToolkit().getImage(APPEARANCE_PATH);
 		return appearance;
-	}
-	@Override
-	public int getCost() {
-		// TODO Auto-generated method stub
-		return COST;
 	}
 
 }

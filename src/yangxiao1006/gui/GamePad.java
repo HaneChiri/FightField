@@ -15,20 +15,18 @@ import yangxiao1006.character.*;
 
 public class GamePad implements KeyListener{
 
-	Characters player1;//玩家1
-	Characters player2;//玩家2
-	FightFieldFrame fff;
-	Graphics g;
+	private Characters player1;//玩家1
+	private Characters player2;//玩家2
+	private FightFieldFrame fff;
 	
 	
 	
 
-	public GamePad(Characters p1, Characters p2, FightFieldFrame f,Graphics _g) {
+	public GamePad(Characters p1, Characters p2, FightFieldFrame f) {
 		// TODO Auto-generated constructor stub
 		player1=p1;
 		player2=p2;
 		fff=f;
-		g=_g;
 	}
 
 

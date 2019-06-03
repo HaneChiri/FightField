@@ -10,6 +10,7 @@ import java.awt.Image;
 
 import yangxiao1006.behavior.*;
 import yangxiao1006.behavior.magic.HealBehavior;
+import yangxiao1006.behavior.magic.InvisibleBehavior;
 import yangxiao1006.behavior.weapon.AxeBehavior;
 import yangxiao1006.behavior.weapon.BowBehavior;
 import yangxiao1006.behavior.weapon.KnifeBehavior;
@@ -86,7 +87,8 @@ public abstract class Characters {
 				new KnifeBehavior("暗影匕首")
 		};
 		magicSlots=new MagicBehavior[] {
-				new HealBehavior()
+				new HealBehavior(),
+				new InvisibleBehavior()
 		};
 		
 	}
@@ -116,7 +118,7 @@ public abstract class Characters {
 	public void changeMagic() {
 		setMagicBehavior(magicSlots[magicSlotsIndex]);
 		
-		if(magicSlotsIndex+1>magicSlots.length) {
+		if(magicSlotsIndex+1>=magicSlots.length) {
 			magicSlotsIndex=0;
 		}
 		else {
@@ -200,7 +202,8 @@ public abstract class Characters {
 
 
 	/**
-	 * 向左移动
+	 * 向左移动<br/>
+	 * 由于两个线程各自操作自己的角色，所以此函数不需要同步
 	 */
 	public void moveLeft() {
 		if(!isAliveFlag) return;
@@ -217,7 +220,8 @@ public abstract class Characters {
 		
 	}
 	/**
-	 * 向右移动
+	 * 向右移动<br/>
+	 * 由于两个线程各自操作自己的角色，所以此函数不需要同步
 	 */
 	public void moveRight() {
 		if(!isAliveFlag) return;
