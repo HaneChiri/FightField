@@ -14,6 +14,7 @@ import yangxiao1006.behavior.*;
 import yangxiao1006.behavior.magic.HealBehavior;
 import yangxiao1006.behavior.magic.InvisibleBehavior;
 import yangxiao1006.behavior.magic.NoneMagicBehavior;
+import yangxiao1006.behavior.magic.TeleportBehavior;
 import yangxiao1006.behavior.weapon.AxeBehavior;
 import yangxiao1006.behavior.weapon.BowBehavior;
 import yangxiao1006.behavior.weapon.KnifeBehavior;
@@ -109,7 +110,7 @@ public class FightFieldFrame extends Frame{
 		MagicBehavior[] ms1=new MagicBehavior[] {
 				new HealBehavior("圣愈术"),
 				new InvisibleBehavior("潜行"),
-				new NoneMagicBehavior("什么都不做的魔法")
+				new NoneMagicBehavior("什么都不做的")
 		};
 		
 		//初始化玩家1
@@ -127,7 +128,8 @@ public class FightFieldFrame extends Frame{
 		};
 		MagicBehavior[] ms2=new MagicBehavior[] {
 				new HealBehavior(),
-				new InvisibleBehavior()
+				new InvisibleBehavior(),
+				new TeleportBehavior()
 		};
 		
 		player2=new Troll("tom", 100, 100, 3, 5,ws2,ms2);
