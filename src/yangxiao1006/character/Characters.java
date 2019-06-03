@@ -164,7 +164,52 @@ public abstract class Characters {
 		
 		magic.useMagic(this,c);
 	}
+	/**
+	 * 增加HP(increase HP)
+	 * @param value 增加值
+	 * @return 上溢返回1，下溢返回-1，正常返回0
+	 */
+	public int incHP(int value) {
+		int finalHP=hitPoint+value;
+		if(finalHP>=0 && finalHP<=hitPointUpper) {//HP未越界
+			hitPoint=finalHP;
+			return 0;
+		}
+		else {
+			if(finalHP<0) {
+				hitPoint=0;
+				return -1;
+			}
+			else {
+				hitPoint=hitPointUpper;
+				return 1;
+			}
+		}		
+	}
 	
+	
+	/**
+	 * 增加MP(increase MP)
+	 * @param value 增加值
+	 * @return 上溢返回1，下溢返回-1，正常返回0
+	 */
+	public int incMP(int value) {
+		int finalMP=magicPoint+value;
+		if(finalMP>=0 && finalMP<=magicPointUpper) {//MP未越界
+			magicPoint=finalMP;
+			return 0;
+		}
+		else {
+			if(finalMP<0) {
+				magicPoint=0;
+				return -1;
+			}
+			else {
+				magicPoint=magicPointUpper;
+				return 1;
+			}
+		}		
+	}
 	
 	
 	/**
@@ -179,16 +224,7 @@ public abstract class Characters {
 		
 		int finalDamage=(attackDamage-defense);//伤害计算：最终伤害=敌方攻击伤害-我方防御力
 		
-		
-		
-		if(hitPoint>0) {
-			if(finalDamage>0) {
-				hitPoint-=finalDamage;
-			}
-			
-		}
-		else{
-			//本体已死不受伤害
+		if(incHP(-finalDamage)==-1) {//如果血量被扣到负数
 			this.killedBy(attacker);
 		}
 		

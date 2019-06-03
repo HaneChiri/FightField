@@ -14,7 +14,7 @@ public class InvisibleBehavior implements MagicBehavior{
 	private String name="隐身魔法";
 	private Image appearance;//魔法的图标
 	
-	public static final int COST=3;//每秒消耗
+	public static final int COST=30;//每秒消耗
 	public static final String APPEARANCE_PATH="image\\Magic\\Invisible.png";
 	
 	public InvisibleBehavior() {}

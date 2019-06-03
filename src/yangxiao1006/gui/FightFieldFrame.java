@@ -127,6 +127,7 @@ public class FightFieldFrame extends Frame{
 	 * 
 	 */
 	public void drawCharacter(Graphics g,Characters c) {
+		if(c.getStatus()==Characters.ST_INVISIBLE) return;//如果隐身就不画
 		Image appearance=c.getAppearance();
 		if(appearance!=null) {
 			g.drawImage(appearance,c.getX(),c.getY(),c.getWidth(),c.getHeight(),this);
@@ -134,6 +135,8 @@ public class FightFieldFrame extends Frame{
 	}
 	
 	public void drawStrand(Graphics g,Characters c) {
+		
+		if(c.getStatus()==Characters.ST_INVISIBLE) return;//隐身不绘制
 		
 		double hpRate=((double)c.getHP())/c.getHPU();
 		double mpRate=((double)c.getMP())/c.getMPU();
@@ -167,6 +170,10 @@ public class FightFieldFrame extends Frame{
 		g.drawString(c.getName(), c.getX(), c.getY()-STRAND_HEIGHT*3);
 		
 	}
+	/**
+	 * 绘制绝对位置属性条
+	 * @param g 画笔对象
+	 */
 	public void drawStrand(Graphics g) {
 		double p1_hpRate=((double)player1.getHP())/player1.getHPU();
 		double p1_mpRate=((double)player1.getMP())/player1.getMPU();
@@ -179,6 +186,7 @@ public class FightFieldFrame extends Frame{
 		
 		
 		//绘制p1血条
+		
 		g.setColor(Color.red);
 		g.drawRect(strandX, strandY-STRAND_HEIGHT*2, STRAND_WIDTH, STRAND_HEIGHT);
 		g.fillRect(strandX, strandY-STRAND_HEIGHT*2,p1_curHPStrandWidth , STRAND_HEIGHT);
@@ -198,6 +206,8 @@ public class FightFieldFrame extends Frame{
 		//绘制p1名字
 		g.setColor(Color.white);
 		g.drawString(player1.getName(),strandX, strandY-STRAND_HEIGHT*3);
+		
+		//p2暂时不弄，原理一样，现在使用的是相对位置属性条
 		
 		
 	}
@@ -271,7 +281,10 @@ public class FightFieldFrame extends Frame{
 		//添加事件监听者
 		f.addWindowListener(new MyWindowListener());
 		f.addKeyListener(new GamePad(player1,player2,f));
-
+		//新建时钟线程，用于游戏中的周期性属性检查
+		Thread clockThread=new Thread(new ClockThread(player1, player2, fff));
+		
+		clockThread.start();
 	}
 	
 	

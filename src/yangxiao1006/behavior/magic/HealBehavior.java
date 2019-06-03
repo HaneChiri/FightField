@@ -32,14 +32,8 @@ public class HealBehavior implements MagicBehavior{
 	 */
 	public int useMagic(Characters attacker, Characters victim) {
 		//自我恢复
-		if(attacker.getMP()>COST) {
-			attacker.setMP(attacker.getMP()-COST);//扣除魔力
-			if(attacker.getHP()+HEAL_VALUE<attacker.getHPU()) {
-				attacker.setHP(attacker.getHP()+HEAL_VALUE);//恢复血量
-			}
-			else {
-				attacker.setHP(attacker.getHPU());//防止HP溢出
-			}
+		if(attacker.incMP(-COST)==0) {//如果魔力扣除成功
+			attacker.incHP(HEAL_VALUE);//自带防溢出
 			System.out.println(attacker.getName()+"恢复了"+HEAL_VALUE+"点HP");
 			attacker.display();
 		}
