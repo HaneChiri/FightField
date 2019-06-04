@@ -112,7 +112,7 @@ public class FightFieldFrame extends Frame{
 		};
 		
 		//初始化玩家1
-		player1=new King("达拉崩吧", 100, 100, 3, 5,ws1,ms1);
+		player1=new Knight("达拉崩吧", 100, 100, 3, 5,ws1,ms1);
 		player1.setBounds(P1_X, P1_Y, P1_WIDTH, P1_HEIGHT);
 		player1.setDirection(false);
 		
@@ -298,18 +298,18 @@ public class FightFieldFrame extends Frame{
 		
 		
 	}
-	
+	//======================//
 	public void update(Graphics g) {
         //覆盖原本的方法
 		paint(g);
     }
-	
+	//======================/*/
 	/*******************************************main函数*********************************************/
 	public static void main(String args[]) {
 		FightFieldFrame f=getInstance("战斗领域");
 		f.initFrame();
 		//初始化角色
-		f.initCharacter();		
+		f.initCharacter();
 		//添加事件监听者
 		f.addWindowListener(new MyWindowListener());
 		f.addKeyListener(new GamePad(player1,player2,f));

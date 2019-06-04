@@ -6,6 +6,12 @@ import yangxiao1006.behavior.magic.InvisibleBehavior;
 import yangxiao1006.character.Characters;
 import yangxiao1006.gui.FightFieldFrame;
 
+
+/**
+ * 时钟线程，用于一些周期性的计算
+ * @author 杨啸
+ *
+ */
 public class ClockThread implements Runnable{
 
 	
@@ -23,7 +29,10 @@ public class ClockThread implements Runnable{
 	
 	
 	
-	
+	/**
+	 * 核对属性，并对于特定属性作出不同的事情
+	 * @param c 核对角色c的属性
+	 */
 	public void cheackStatus(Characters c) {
 		switch (c.getStatus()) {
 		case Characters.ST_INVISIBLE://隐身魔法每个周期扣除一定的魔力
@@ -38,7 +47,10 @@ public class ClockThread implements Runnable{
 
 	}
 	
-	
+	/**
+	 * 周期性恢复属性值（回血回魔）
+	 * @param c 周期性恢复角色c的HP和MP
+	 */
 	public void recover(Characters c) {
 		if(!c.getIsAliveFlag()) return;//角色死亡就不再回血
 		c.incHP(Characters.HP_RECOVER);

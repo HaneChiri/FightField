@@ -2,24 +2,21 @@ package yangxiao1006.gui;
 import java.awt.*;
 import java.awt.event.*;
 
-import yangxiao1006.behavior.weapon.AxeBehavior;
-import yangxiao1006.behavior.weapon.BowBehavior;
-import yangxiao1006.behavior.weapon.KnifeBehavior;
+import yangxiao1006.behavior.weapon.*;
 import yangxiao1006.character.*;
-/*游戏手柄类
+
+
+/**
+ * 游戏手柄类
  * 用于将键位与角色的动作对应起来
- * 
- * */
-
-
-
+ * @author Administrator
+ *
+ */
 public class GamePad implements KeyListener{
 
 	private Characters player1;//玩家1
 	private Characters player2;//玩家2
 	private FightFieldFrame fff;
-	
-	
 	
 
 	public GamePad(Characters p1, Characters p2, FightFieldFrame f) {
