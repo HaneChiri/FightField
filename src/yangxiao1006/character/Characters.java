@@ -3,6 +3,7 @@ package yangxiao1006.character;
  * project:【战斗领域】小游戏<br/>
  * description: 角色类，用于描述角色的共性特征<br/>
  * @author 杨啸
+ * @version 1.0
  * */
 
 
